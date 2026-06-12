@@ -1,0 +1,89 @@
+"use client";
+import { useEffect, useState } from "react";
+
+import { announcementData } from "@/data/mockData";
+import { CalendarDays, ChevronRight, MapPin, Megaphone } from "lucide-react";
+
+export default function AnnouncementCard() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % announcementData.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const item = announcementData[activeIndex];
+
+  return (
+    <div className="mt-5">
+      {/* Header */}
+      <div className="mb-3 flex items-center justify-between">
+        <h3 className="text-lg font-bold text-gray-800">Pengumuman Terbaru</h3>
+
+        <button className="flex items-center gap-1 text-sm text-gray-600">
+          Lihat Semua
+          <ChevronRight size={16} />
+        </button>
+      </div>
+
+      {/* Card */}
+      <div className="rounded-3xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+        <div className="flex items-center gap-4">
+          {/* Thumbnail */}
+          <div
+            className="
+              flex h-20 w-20 shrink-0
+              items-center justify-center
+              rounded-2xl
+              bg-green-50
+            "
+          >
+            <Megaphone size={36} className="text-green-700" />
+          </div>
+
+          {/* Content */}
+          <div className="flex-1">
+            <h4 className="font-bold text-gray-800">{item.title}</h4>
+
+            <div className="mt-2 flex items-center gap-2 text-xs text-gray-500">
+              <CalendarDays size={14} />
+              <span>
+                {item.date} | {item.time}
+              </span>
+            </div>
+
+            <div className="mt-1 flex items-center gap-2 text-xs text-gray-500">
+              <MapPin size={14} />
+              <span>{item.location}</span>
+            </div>
+          </div>
+
+          {/* Arrow */}
+          <button
+            onClick={() =>
+              setActiveIndex((prev) => (prev + 1) % announcementData.length)
+            }
+          >
+            <ChevronRight size={20} className="text-gray-400" />
+          </button>
+        </div>
+      </div>
+
+      {/* Indicator */}
+      <div className="mt-3 flex items-center justify-center gap-2">
+        {announcementData.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveIndex(index)}
+            className={
+              index === activeIndex
+                ? "h-2 w-6 rounded-full bg-green-700"
+                : " h-2 w-2 rounded-full bg-gray-300"
+            }
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
