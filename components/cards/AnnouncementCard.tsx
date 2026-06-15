@@ -34,7 +34,7 @@ export default function AnnouncementCard() {
       {/* Card */}
       <Link
         href={`/announcements/${item.id}`}
-        className="rounded-3xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
+        className=" block rounded-3xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
       >
         <div className="flex items-center gap-4">
           {/* Thumbnail */}
