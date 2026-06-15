@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { announcementData } from "@/data/announcementData";
@@ -21,14 +22,20 @@ export default function AnnouncementCard() {
       <div className="mb-3 flex items-center justify-between">
         <h3 className="text-lg font-bold text-gray-800">Pengumuman Terbaru</h3>
 
-        <button className="flex items-center gap-1 text-sm text-gray-600">
+        <Link
+          href="/announcements"
+          className="flex items-center gap-1 text-sm text-green-600"
+        >
           Lihat Semua
           <ChevronRight size={16} />
-        </button>
+        </Link>
       </div>
 
       {/* Card */}
-      <div className="rounded-3xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+      <Link
+        href={`/announcements/${item.id}`}
+        className="rounded-3xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
+      >
         <div className="flex items-center gap-4">
           {/* Thumbnail */}
           <div
@@ -58,17 +65,8 @@ export default function AnnouncementCard() {
               <span>{item.location}</span>
             </div>
           </div>
-
-          {/* Arrow */}
-          <button
-            onClick={() =>
-              setActiveIndex((prev) => (prev + 1) % announcementData.length)
-            }
-          >
-            <ChevronRight size={20} className="text-gray-400" />
-          </button>
         </div>
-      </div>
+      </Link>
 
       {/* Indicator */}
       <div className="mt-3 flex items-center justify-center gap-2">

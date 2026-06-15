@@ -5,7 +5,10 @@ import Link from "next/link";
 export default function AnnouncementsPage() {
   return (
     <div className="p-6">
-      <h1 className="mb-6 text-2xl font-bold">Pengumuman</h1>
+      <Link href="/" className="text-sm text-green-700">
+        ← Kembali
+      </Link>
+      <h1 className="mb-6 mt-4 text-2xl font-bold">Pengumuman</h1>
 
       {announcementData.map((item) => (
         <Link
