@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import { announcementData } from "@/data/mockData";
+import { announcementData } from "@/data/announcementData";
 import { CalendarDays, ChevronRight, MapPin, Megaphone } from "lucide-react";
 
 export default function AnnouncementCard() {
