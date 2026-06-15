@@ -59,7 +59,7 @@ export default function HeroCard() {
 
       {/* Saldo */}
       <div className="relative z-10 mt-3 flex items-center justify-between">
-        <h2 className="text-4xl font-bold tracking-tight">
+        <h2 className="text-3xl font-bold tracking-tight">
           Rp {userData.saldo.toLocaleString("id-ID")}
         </h2>
 
@@ -92,13 +92,13 @@ export default function HeroCard() {
                   key={action.label}
                   className="flex flex-col items-center text-center"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md">
-                    <Icon size={22} className="text-green-700" />
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md">
+                    <Icon size={18} className="text-green-700" />
                   </div>
 
-                  <p className="mt-2 text-sm font-semibold">{action.label}</p>
+                  <p className="mt-2 text-xs font-semibold">{action.label}</p>
 
-                  <p className="mt-1 text-[10px] text-green-100/70">
+                  <p className="mt-1 text-[9px] text-green-100/70">
                     {action.desc}
                   </p>
                 </button>
