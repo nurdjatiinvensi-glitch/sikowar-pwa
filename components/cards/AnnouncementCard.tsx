@@ -16,6 +16,26 @@ export default function AnnouncementCard() {
 
   const item = announcementData[activeIndex];
 
+  const [touchStart, setTouchStart] = useState(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const touchEnd = e.changedTouches[0].clientX;
+
+    if (touchStart - touchEnd > 50) {
+      setActiveIndex((prev) => (prev + 1) % announcementData.length);
+    }
+
+    if (touchEnd - touchStart > 50) {
+      setActiveIndex((prev) =>
+        prev === 0 ? announcementData.length - 1 : prev - 1,
+      );
+    }
+  };
+
   return (
     <div className="mt-5">
       {/* Header */}
@@ -34,6 +54,8 @@ export default function AnnouncementCard() {
       {/* Card */}
       <Link
         href={`/announcements/${item.id}`}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
         className=" block rounded-3xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
       >
         <div className="flex items-center gap-4">
