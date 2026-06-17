@@ -1,6 +1,7 @@
 export const announcementData = [
   {
     id: 1,
+    category:  ["event"],
     title: "Kerja Bakti Minggu",
     date: "Minggu, 8 Juni 2026",
     time: "08:00 - 11:30 WIB",
@@ -11,6 +12,7 @@ export const announcementData = [
 
   {
     id: 2,
+    category:  ["event"],
     title: "Pertemuan Warga",
     date: "Sabtu, 14 Juni 2026",
     time: "19:30 - 21:00 WIB",
@@ -21,6 +23,7 @@ export const announcementData = [
 
   {
     id: 3,
+    category:  ["event"],
     title: "Imunisasi Balita",
     date: "Minggu, 15 Juni 2026",
     time: "07:30 - 11:00 WIB",
@@ -28,4 +31,16 @@ export const announcementData = [
     description:
       "Program imunisasi balita bekerja sama dengan Puskesmas setempat.",
   },
+
+  {
+  id: 4,
+  category:  ["announcement"],
+  title: "Perubahan Jadwal Posyandu",
+  date: "Senin, 16 Juni 2026",
+  time: "-",
+  location: "RT 02",
+  description:
+    "Pelayanan Posyandu tanggal 16 Juni dipindahkan ke Balai Warga RT 02.",
+  },
+
 ];
