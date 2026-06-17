@@ -1,3 +1,4 @@
+import AnnouncementDetailContent from "@/components/pages/AnnouncementDetailContent";
 import { announcementData } from "@/data/announcementData";
 import { Calendar, Clock, MapPin } from "lucide-react";
 import Link from "next/link";
@@ -52,15 +53,7 @@ export default async function AnnouncementDetailPage({ params }: Props) {
         <p>{announcement.description}</p>
       </div>
 
-      <button
-        className="
-          mt-6 w-full rounded-2xl
-          bg-green-700 py-3
-          font-semibold text-white
-        "
-      >
-        Saya Akan Hadir
-      </button>
+      <AnnouncementDetailContent announcement={announcement} />
     </div>
   );
 }
