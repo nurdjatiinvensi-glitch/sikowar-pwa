@@ -1,5 +1,5 @@
 export const profileData = {
-  name: "DJ",
+  name: "Nurdjati Trihanggono",
   role: "Warga",
   residence: "D'Palm Residence",
 

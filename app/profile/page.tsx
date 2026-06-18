@@ -1,118 +1,221 @@
+"use client";
+
+import { useState } from "react";
+
+import SettingCard from "@/components/cards/SettingCard";
+import PageContainer from "@/components/layout/PageContainer";
+
+import {
+  Bell,
+  House,
+  Info,
+  Lock,
+  LogOut,
+  Shield,
+  User,
+  Users,
+} from "lucide-react";
+
 import { profileData } from "@/data/profileData";
 
-import { ChevronRight, Lock, LogOut, Mail, Phone, Shield } from "lucide-react";
-
 export default function ProfilePage() {
+  const [activeTab, setActiveTab] = useState<"account" | "resident">("account");
+
   return (
-    <div className="p-6">
-      {/* Header */}
-      <div
-        className="
-    -mx-6
-    -mt-6
-    rounded-b-[40px]
-bg-red-600
-    px-6
-    pt-8
-    pb-10
-    text-white
-  "
-      >
-        <div className="flex flex-col items-center">
-          <div
-            className="
-        flex h-24 w-24 items-center justify-center
-        rounded-full
-        border-4 border-white/40
-        bg-white/20
-        text-3xl font-bold
-      "
-          >
-            DJ
-          </div>
+    <PageContainer>
+      <div className="flex h-screen flex-col bg-white">
+        {/* HEADER */}
+        <div
+          className="
+            shrink-0
+            rounded-b-[40px]
+           bg-linear-to-br
+from-green-500
+via-green-600
+to-green-700
+            px-6
+            pt-6
+            pb-6
+            text-white
+          "
+        >
+          {/* Top Bar */}
+          <div className="mb-6 flex items-center justify-between">
+            <h1 className="text-2xl font-bold">Profil Saya</h1>
 
-          <h1 className="mt-4 text-2xl font-bold">{profileData.name}</h1>
+            <div className="relative">
+              <Bell size={28} />
 
-          <p>{profileData.role}</p>
-
-          <p className="text-sm text-green-100">{profileData.residence}</p>
-        </div>
-      </div>
-
-      <div className="mt-4 flex border-b">
-        <button className="flex-1 border-b-2 border-green-700 py-3 font-medium text-green-700">
-          Akun
-        </button>
-
-        <button className="flex-1 py-3 text-gray-500">Data Warga</button>
-      </div>
-
-      {/* Akun */}
-      <div className="mt-8 rounded-2xl bg-white p-4 shadow">
-        <h2 className="mb-4 font-semibold">Akun Saya</h2>
-
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <Mail size={18} className="text-green-700" />
-
-            <div>
-              <p className="text-xs text-gray-500">Email</p>
-              <p>{profileData.email}</p>
+              <span
+                className="
+      absolute
+      -right-1
+      -top-1
+      h-3
+      w-3
+      rounded-full
+      bg-red-500
+    "
+              />
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            <Phone size={18} className="text-green-700" />
+          {/* Avatar */}
+          <div className="flex flex-col items-center">
+            <div className="relative">
+              <div
+                className="
+      flex
+      h-24
+      w-24
+      items-center
+      justify-center
+      rounded-full
+      border-4
+      border-white/40
+      bg-white/20
+      text-4xl
+      font-bold
+    "
+              >
+                NT
+              </div>
 
-            <div>
-              <p className="text-xs text-gray-500">No HP</p>
-              <p>{profileData.phone}</p>
+              <button
+                className="
+      absolute
+      bottom-0
+      right-0
+      flex
+      h-10
+      w-10
+      items-center
+      justify-center
+      rounded-full
+      bg-white
+      text-gray-700
+      shadow-md
+    "
+              >
+                📷
+              </button>
             </div>
-          </div>
 
-          <div className="flex items-center gap-3">
-            <Shield size={18} className="text-green-700" />
+            <h2 className="mt-3 text-3xl font-bold">{profileData.name}</h2>
 
-            <div>
-              <p className="text-xs text-gray-500">Role</p>
-              <p>{profileData.role}</p>
-            </div>
+            <p className="mt-0.5 text-lg">Warga RT 02</p>
+
+            <p className="text-sm text-white/80">{profileData.residence}</p>
           </div>
         </div>
-      </div>
 
-      {/* Keamanan */}
-      <div className="mt-4 rounded-2xl bg-white p-4 shadow">
-        <button className="flex w-full items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Lock size={18} className="text-green-700" />
-            <span>Ubah Password</span>
+        {/* TAB */}
+        <div className="shrink-0 border-b bg-white">
+          <div className="flex">
+            <button
+              onClick={() => setActiveTab("account")}
+              className={`flex-1 py-4 ${
+                activeTab === "account"
+                  ? "border-b-2 border-green-700 font-medium text-green-700"
+                  : "text-gray-500"
+              }`}
+            >
+              Akun
+            </button>
+
+            <button
+              onClick={() => setActiveTab("resident")}
+              className={`flex-1 py-4 ${
+                activeTab === "resident"
+                  ? "border-b-2 border-green-700 font-medium text-green-700"
+                  : "text-gray-500"
+              }`}
+            >
+              Data Warga
+            </button>
           </div>
+        </div>
 
-          <ChevronRight size={18} />
-        </button>
-      </div>
+        {/* CONTENT */}
+        <div className="flex-1 overflow-y-auto px-6 py-6">
+          {activeTab === "account" && (
+            <>
+              <div className="space-y-4">
+                <SettingCard
+                  icon={<User size={22} />}
+                  title="Informasi Akun"
+                  description="Email, Nomor HP, Nama Login"
+                />
 
-      {/* Aplikasi */}
-      <div className="mt-4 rounded-2xl bg-white p-4 shadow">
-        <div className="flex items-center justify-between">
-          <span>Versi Aplikasi</span>
+                <SettingCard
+                  icon={<Lock size={22} />}
+                  title="PIN & Keamanan"
+                  description="Atur PIN, Ubah Password, Biometrik"
+                />
 
-          <span className="text-gray-500">{profileData.version}</span>
+                <SettingCard
+                  icon={<Bell size={22} />}
+                  title="Notifikasi"
+                  description="Pengaturan notifikasi aplikasi"
+                />
+
+                <SettingCard
+                  icon={<Info size={22} />}
+                  title="Tentang Aplikasi"
+                  description="Versi, Kebijakan, Bantuan"
+                />
+              </div>
+
+              <button
+                className="
+                  mt-6
+                  flex
+                  w-full
+                  items-center
+                  justify-center
+                  gap-2
+                  rounded-2xl
+                  border
+                  border-red-200
+                  py-4
+                  text-red-600
+                "
+              >
+                <LogOut size={18} />
+                Keluar
+              </button>
+            </>
+          )}
+
+          {activeTab === "resident" && (
+            <div className="space-y-4">
+              <SettingCard
+                icon={<User size={22} />}
+                title="Identitas"
+                description="Nama Lengkap, NIK"
+              />
+
+              <SettingCard
+                icon={<House size={22} />}
+                title="Alamat Domisili"
+                description="Data alamat rumah"
+              />
+
+              <SettingCard
+                icon={<Shield size={22} />}
+                title="Status Rumah"
+                description="Pemilik / Kontrak"
+              />
+
+              <SettingCard
+                icon={<Users size={22} />}
+                title="Anggota Keluarga"
+                description="Data anggota keluarga"
+              />
+            </div>
+          )}
         </div>
       </div>
-
-      {/* Logout */}
-      <button
-        className="
-          mt-6 flex w-full items-center justify-center gap-2
-          rounded-2xl border border-red-200
-          py-3 text-red-600
-        "
-      >
-        <LogOut size={18} />
-        Keluar
-      </button>
-    </div>
+    </PageContainer>
   );
 }
