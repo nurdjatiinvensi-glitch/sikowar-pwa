@@ -1,6 +1,6 @@
 "use client";
 
-import { Announcement } from "@/app/types/announcement";
+import type { Announcement } from "@/app/types/announcement";
 import { useState } from "react";
 
 type Props = {

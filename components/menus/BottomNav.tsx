@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { FileText, House, ShieldAlert, User, Users } from "lucide-react";
 
 type BottomNavProps = {
@@ -32,12 +34,12 @@ export default function BottomNav({ onEmergencyClick }: BottomNavProps) {
         "
       >
         {/* Beranda */}
-        <button className="flex flex-col items-center">
+        <Link href="/" className="flex flex-col items-center">
           <House size={22} className="text-green-700" />
           <span className="mt-1 text-[11px] font-medium text-green-700">
             Beranda
           </span>
-        </button>
+        </Link>
 
         {/* Laporan */}
         <button className="flex flex-col items-center">
@@ -55,10 +57,10 @@ export default function BottomNav({ onEmergencyClick }: BottomNavProps) {
         </button>
 
         {/* Profil */}
-        <button className="flex flex-col items-center">
+        <Link href="/profile" className="flex flex-col items-center">
           <User size={22} className="text-gray-500" />
           <span className="mt-1 text-[11px] text-gray-500">Profil</span>
-        </button>
+        </Link>
 
         {/* Emergency */}
         <button
