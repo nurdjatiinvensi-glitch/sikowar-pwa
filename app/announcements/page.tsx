@@ -1,30 +1,45 @@
 "use client";
 
-import { Calendar, ChevronRight, MapPin } from "lucide-react";
 import Link from "next/link";
 
-import { announcementData } from "@/data/announcementData";
+import { Calendar, ChevronRight, MapPin } from "lucide-react";
 
 import AppLayout from "@/components/layout/AppLayout";
+import HeaderBackground from "@/components/layout/HeaderBackground";
+
+import { announcementData } from "@/data/announcementData";
 
 export default function AnnouncementsPage() {
   return (
     <AppLayout activeMenu="home">
-      <div className="p-6">
-        <Link href="/" className="text-sm text-green-700">
-          ← Kembali
-        </Link>
+      {/* HEADER */}
+      <HeaderBackground variant="default">
+        <div className="px-6 pt-8 pb-8 text-white">
+          <Link href="/" className="text-sm text-white/90">
+            ← Kembali
+          </Link>
 
-        <h1 className="mb-6 mt-4 text-2xl font-bold">Pengumuman</h1>
+          <h1 className="mt-4 text-3xl font-bold">Pengumuman</h1>
 
+          <p className="mt-2 text-white/90">Informasi dan kegiatan warga</p>
+        </div>
+      </HeaderBackground>
+
+      {/* CONTENT */}
+      <div className="px-6 py-6">
         {announcementData.map((item) => (
           <Link
             key={item.id}
             href={`/announcements/${item.id}`}
             className="
-              mb-4 block rounded-2xl
-              bg-white p-4 shadow
-              transition hover:shadow-md
+              mb-4
+              block
+              rounded-2xl
+              bg-white
+              p-4
+              shadow-sm
+              transition
+              hover:shadow-md
             "
           >
             <div className="flex items-start justify-between">

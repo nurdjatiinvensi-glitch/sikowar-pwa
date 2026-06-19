@@ -1,4 +1,5 @@
 import AppLayout from "@/components/layout/AppLayout";
+import HeaderBackground from "@/components/layout/HeaderBackground";
 import AnnouncementDetailContent from "@/components/pages/AnnouncementDetailContent";
 import { announcementData } from "@/data/announcementData";
 import { Calendar, Clock, MapPin } from "lucide-react";
@@ -24,14 +25,19 @@ export default async function AnnouncementDetailPage({ params }: Props) {
   }
 
   return (
-    <AppLayout bottomNav={false}>
-      <div className="p-6">
-        <Link href="/announcements" className="text-sm text-green-700">
-          ← Kembali
-        </Link>
+    <AppLayout activeMenu="home">
+      <HeaderBackground variant="default">
+        <div className="px-6 pt-8 pb-8 text-white">
+          <Link href="/announcements" className="text-sm text-white/90">
+            ← Kembali
+          </Link>
 
-        <h1 className="mt-4 text-2xl font-bold">{announcement.title}</h1>
+          <h1 className="mt-4 text-3xl font-bold">{announcement.title}</h1>
 
+          <p className="mt-2 text-white/90">Detail Pengumuman</p>
+        </div>
+      </HeaderBackground>
+      <div className="px-6 py-6">
         <div className="mt-6 space-y-4">
           <div className="flex items-center gap-3">
             <Calendar size={18} />
