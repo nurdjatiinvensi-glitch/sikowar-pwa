@@ -2,19 +2,14 @@
 
 import { Calendar, ChevronRight, MapPin } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
 
 import { announcementData } from "@/data/announcementData";
 
-import PageContainer from "@/components/layout/PageContainer";
-import BottomNav from "@/components/menus/BottomNav";
-import EmergencySheet from "@/components/sheets/EmergencySheet";
+import AppLayout from "@/components/layout/AppLayout";
 
 export default function AnnouncementsPage() {
-  const [showEmergency, setShowEmergency] = useState(false);
-
   return (
-    <PageContainer>
+    <AppLayout activeMenu="home">
       <div className="p-6">
         <Link href="/" className="text-sm text-green-700">
           ← Kembali
@@ -52,13 +47,6 @@ export default function AnnouncementsPage() {
           </Link>
         ))}
       </div>
-
-      <BottomNav onEmergencyClick={() => setShowEmergency(true)} />
-
-      <EmergencySheet
-        isOpen={showEmergency}
-        onClose={() => setShowEmergency(false)}
-      />
-    </PageContainer>
+    </AppLayout>
   );
 }

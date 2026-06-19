@@ -1,3 +1,4 @@
+import AppLayout from "@/components/layout/AppLayout";
 import AnnouncementDetailContent from "@/components/pages/AnnouncementDetailContent";
 import { announcementData } from "@/data/announcementData";
 import { Calendar, Clock, MapPin } from "lucide-react";
@@ -23,37 +24,39 @@ export default async function AnnouncementDetailPage({ params }: Props) {
   }
 
   return (
-    <div className="p-6">
-      <Link href="/announcements" className="text-sm text-green-700">
-        ← Kembali
-      </Link>
+    <AppLayout bottomNav={false}>
+      <div className="p-6">
+        <Link href="/announcements" className="text-sm text-green-700">
+          ← Kembali
+        </Link>
 
-      <h1 className="mt-4 text-2xl font-bold">{announcement.title}</h1>
+        <h1 className="mt-4 text-2xl font-bold">{announcement.title}</h1>
 
-      <div className="mt-6 space-y-4">
-        <div className="flex items-center gap-3">
-          <Calendar size={18} />
-          <span>{announcement.date}</span>
+        <div className="mt-6 space-y-4">
+          <div className="flex items-center gap-3">
+            <Calendar size={18} />
+            <span>{announcement.date}</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Clock size={18} />
+            <span>{announcement.time}</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <MapPin size={18} />
+            <span>{announcement.location}</span>
+          </div>
         </div>
 
-        <div className="flex items-center gap-3">
-          <Clock size={18} />
-          <span>{announcement.time}</span>
+        <div className="mt-8 rounded-2xl bg-white p-4 shadow">
+          <h2 className="mb-2 font-semibold">Deskripsi</h2>
+
+          <p>{announcement.description}</p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <MapPin size={18} />
-          <span>{announcement.location}</span>
-        </div>
+        <AnnouncementDetailContent announcement={announcement} />
       </div>
-
-      <div className="mt-8 rounded-2xl bg-white p-4 shadow">
-        <h2 className="mb-2 font-semibold">Deskripsi</h2>
-
-        <p>{announcement.description}</p>
-      </div>
-
-      <AnnouncementDetailContent announcement={announcement} />
-    </div>
+    </AppLayout>
   );
 }
