@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
-
 import SettingCard from "@/components/cards/SettingCard";
+import HeaderBackground from "@/components/layout/HeaderBackground";
 import PageContainer from "@/components/layout/PageContainer";
-
+import BottomNav from "@/components/menus/BottomNav";
+import { profileData } from "@/data/profileData";
 import {
   Bell,
   House,
@@ -15,8 +15,7 @@ import {
   User,
   Users,
 } from "lucide-react";
-
-import { profileData } from "@/data/profileData";
+import { useState } from "react";
 
 export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState<"account" | "resident">("account");
@@ -25,29 +24,26 @@ export default function ProfilePage() {
     <PageContainer>
       <div className="flex h-screen flex-col bg-white">
         {/* HEADER */}
-        <div
-          className="
+        <HeaderBackground variant="default">
+          <div
+            className="
             shrink-0
             rounded-b-[40px]
-           bg-linear-to-br
-from-green-500
-via-green-600
-to-green-700
             px-6
             pt-6
             pb-6
             text-white
           "
-        >
-          {/* Top Bar */}
-          <div className="mb-6 flex items-center justify-between">
-            <h1 className="text-2xl font-bold">Profil Saya</h1>
+          >
+            {/* Top Bar */}
+            <div className="mb-6 flex items-center justify-between">
+              <h1 className="text-2xl font-bold">Profil Saya</h1>
 
-            <div className="relative">
-              <Bell size={28} />
+              <div className="relative">
+                <Bell size={28} />
 
-              <span
-                className="
+                <span
+                  className="
       absolute
       -right-1
       -top-1
@@ -56,15 +52,15 @@ to-green-700
       rounded-full
       bg-red-500
     "
-              />
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Avatar */}
-          <div className="flex flex-col items-center">
-            <div className="relative">
-              <div
-                className="
+            {/* Avatar */}
+            <div className="flex flex-col items-center">
+              <div className="relative">
+                <div
+                  className="
       flex
       h-24
       w-24
@@ -77,12 +73,12 @@ to-green-700
       text-4xl
       font-bold
     "
-              >
-                NT
-              </div>
+                >
+                  NT
+                </div>
 
-              <button
-                className="
+                <button
+                  className="
       absolute
       bottom-0
       right-0
@@ -96,18 +92,19 @@ to-green-700
       text-gray-700
       shadow-md
     "
-              >
-                📷
-              </button>
+                >
+                  📷
+                </button>
+              </div>
+
+              <h2 className="mt-3 text-3xl font-bold">{profileData.name}</h2>
+
+              <p className="mt-0.5 text-lg">Warga RT 02</p>
+
+              <p className="text-sm text-white/80">{profileData.residence}</p>
             </div>
-
-            <h2 className="mt-3 text-3xl font-bold">{profileData.name}</h2>
-
-            <p className="mt-0.5 text-lg">Warga RT 02</p>
-
-            <p className="text-sm text-white/80">{profileData.residence}</p>
           </div>
-        </div>
+        </HeaderBackground>
 
         {/* TAB */}
         <div className="shrink-0 border-b bg-white">
@@ -137,7 +134,7 @@ to-green-700
         </div>
 
         {/* CONTENT */}
-        <div className="flex-1 overflow-y-auto px-6 py-6">
+        <div className="flex-1 overflow-y-auto px-6 py-6 pb-28">
           {activeTab === "account" && (
             <>
               <div className="space-y-4">
@@ -216,6 +213,7 @@ to-green-700
           )}
         </div>
       </div>
+      <BottomNav />
     </PageContainer>
   );
 }
