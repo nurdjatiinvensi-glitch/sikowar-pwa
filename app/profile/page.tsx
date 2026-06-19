@@ -1,9 +1,8 @@
 "use client";
 
 import SettingCard from "@/components/cards/SettingCard";
+import AppLayout from "@/components/layout/AppLayout";
 import HeaderBackground from "@/components/layout/HeaderBackground";
-import PageContainer from "@/components/layout/PageContainer";
-import BottomNav from "@/components/menus/BottomNav";
 import { profileData } from "@/data/profileData";
 import {
   Bell,
@@ -21,7 +20,7 @@ export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState<"account" | "resident">("account");
 
   return (
-    <PageContainer>
+    <AppLayout>
       <div className="flex h-screen flex-col bg-white">
         {/* HEADER */}
         <HeaderBackground variant="default">
@@ -213,7 +212,6 @@ export default function ProfilePage() {
           )}
         </div>
       </div>
-      <BottomNav />
-    </PageContainer>
+    </AppLayout>
   );
 }
