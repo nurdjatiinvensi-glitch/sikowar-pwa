@@ -20,7 +20,7 @@ export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState<"account" | "resident">("account");
 
   return (
-    <AppLayout>
+    <AppLayout activeMenu="profile">
       <div className="flex h-screen flex-col bg-white">
         {/* HEADER */}
         <HeaderBackground variant="default">

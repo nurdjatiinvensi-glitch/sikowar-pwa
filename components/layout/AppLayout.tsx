@@ -9,11 +9,13 @@ import EmergencySheet from "@/components/sheets/EmergencySheet";
 type AppLayoutProps = {
   children: React.ReactNode;
   bottomNav?: boolean;
+  activeMenu?: "home" | "report" | "admin" | "profile";
 };
 
 export default function AppLayout({
   children,
   bottomNav = true,
+  activeMenu = "home",
 }: AppLayoutProps) {
   const [showEmergency, setShowEmergency] = useState(false);
 
@@ -22,7 +24,10 @@ export default function AppLayout({
       {children}
 
       {bottomNav && (
-        <BottomNav onEmergencyClick={() => setShowEmergency(true)} />
+        <BottomNav
+          active={activeMenu}
+          onEmergencyClick={() => setShowEmergency(true)}
+        />
       )}
 
       <EmergencySheet

@@ -4,8 +4,12 @@ import { FileText, House, ShieldAlert, User, Users } from "lucide-react";
 
 type BottomNavProps = {
   onEmergencyClick?: () => void;
+  active?: "home" | "report" | "admin" | "profile";
 };
-export default function BottomNav({ onEmergencyClick }: BottomNavProps) {
+export default function BottomNav({
+  onEmergencyClick,
+  active = "home",
+}: BottomNavProps) {
   return (
     <div
       className="
@@ -35,8 +39,17 @@ export default function BottomNav({ onEmergencyClick }: BottomNavProps) {
       >
         {/* Beranda */}
         <Link href="/" className="flex flex-col items-center">
-          <House size={22} className="text-green-700" />
-          <span className="mt-1 text-[11px] font-medium text-green-700">
+          <House
+            size={22}
+            className={active === "home" ? "text-green-700" : "text-gray-500"}
+          />
+          <span
+            className={
+              active === "home"
+                ? "mt-1 text-[11px] font-medium text-green-700"
+                : "mt-1 text-[11px] text-gray-500"
+            }
+          >
             Beranda
           </span>
         </Link>
@@ -58,7 +71,12 @@ export default function BottomNav({ onEmergencyClick }: BottomNavProps) {
 
         {/* Profil */}
         <Link href="/profile" className="flex flex-col items-center">
-          <User size={22} className="text-gray-500" />
+          <User
+            size={22}
+            className={
+              active === "profile" ? "text-green-700" : "text-gray-500"
+            }
+          />
           <span className="mt-1 text-[11px] text-gray-500">Profil</span>
         </Link>
 
