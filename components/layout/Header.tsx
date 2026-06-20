@@ -1,19 +1,15 @@
 "use client";
 
 import { userData } from "@/data/mockData";
-import { Bell, Eye, EyeOff, House, Search } from "lucide-react";
+import { Bell, Eye, EyeOff, Search } from "lucide-react";
 import { useState } from "react";
 
 export default function Header() {
   const [showAddress, setShowAddress] = useState(true);
 
   return (
-    <div className=" relative overflow-hidden px-6 pt-6 pb-24">
+    <div className="px-6 pt-6 pb-8">
       {/* Background Decoration */}
-      <House
-        size={240}
-        className="absolute -bottom-10 -right-1 opacity-5 text-green-700"
-      />
 
       {/* Top Bar */}
       <div className="flex items-center justify-between">

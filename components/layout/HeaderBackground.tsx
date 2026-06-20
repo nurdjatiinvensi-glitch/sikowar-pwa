@@ -24,7 +24,7 @@ export default function HeaderBackground({
       "
       style={{
         backgroundImage: `url(${bgImage})`,
-        minHeight: "240px",
+        minHeight: variant === "home" ? "320px" : "240px",
       }}
     >
       {/* overlay biar tulisan tetap kebaca */}
