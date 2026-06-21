@@ -64,10 +64,13 @@ export default function BottomNav({
         <div className="w-16" />
 
         {/* Pengurus */}
-        <button className="flex flex-col items-center">
-          <Users size={22} className="text-gray-500" />
+        <Link href="/pengurus" className="flex flex-col items-center">
+          <Users
+            size={22}
+            className={active === "admin" ? "text-green-700" : "text-gray-500"}
+          />
           <span className="mt-1 text-[11px] text-gray-500">Pengurus</span>
-        </button>
+        </Link>
 
         {/* Profil */}
         <Link href="/profile" className="flex flex-col items-center">
