@@ -37,7 +37,7 @@ export const serviceMenus = [
   {
     icon: CalendarDays,
     title: "Event",
-    desc: "Lihat dan ikuti kegiatan warga",
+    desc: "Agenda dan kegiatan warga",
     href: "/event",
   },
   {
