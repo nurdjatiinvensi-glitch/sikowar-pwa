@@ -2,6 +2,7 @@
 
 import SettingCard from "@/components/cards/SettingCard";
 import AppLayout from "@/components/layout/AppLayout";
+import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
 import { profileData } from "@/data/profileData";
 import {
@@ -24,6 +25,7 @@ export default function ProfilePage() {
       <div className="flex h-screen flex-col bg-white">
         {/* HEADER */}
         <HeaderBackground variant="default">
+          <BackButton />
           <div
             className="
             shrink-0

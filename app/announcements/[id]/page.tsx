@@ -1,9 +1,9 @@
 import AppLayout from "@/components/layout/AppLayout";
+import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
 import AnnouncementDetailContent from "@/components/pages/AnnouncementDetailContent";
 import { announcementData } from "@/data/announcementData";
 import { Calendar, Clock, MapPin } from "lucide-react";
-import Link from "next/link";
 
 type Props = {
   params: Promise<{
@@ -28,10 +28,7 @@ export default async function AnnouncementDetailPage({ params }: Props) {
     <AppLayout activeMenu="home">
       <HeaderBackground variant="default">
         <div className="px-6 pt-8 pb-8 text-white">
-          <Link href="/announcements" className="text-sm text-white/90">
-            ← Kembali
-          </Link>
-
+          <BackButton href="/announcements" />
           <h1 className="mt-4 text-3xl font-bold">{announcement.title}</h1>
 
           <p className="mt-2 text-white/90">Detail Pengumuman</p>

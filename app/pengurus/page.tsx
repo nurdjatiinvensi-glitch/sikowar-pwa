@@ -5,6 +5,7 @@ import HeaderBackground from "@/components/layout/HeaderBackground";
 
 import PengurusCard from "@/components/cards/PengurusCard";
 
+import BackButton from "@/components/layout/BackButton";
 import { pengurusData } from "@/data/pengurusData";
 
 export default function PengurusPage() {
@@ -12,6 +13,7 @@ export default function PengurusPage() {
     <AppLayout activeMenu="admin">
       {/* HEADER */}
       <HeaderBackground variant="default">
+        <BackButton />
         <div className="px-6 pt-8 pb-8 text-white">
           <h1 className="text-3xl font-bold">Pengurus RT</h1>
 

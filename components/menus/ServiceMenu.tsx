@@ -1,33 +1,6 @@
-import {
-  CalendarDays,
-  ChevronRight,
-  MessageSquare,
-  Recycle,
-  Smartphone,
-} from "lucide-react";
-
-const services = [
-  {
-    icon: MessageSquare,
-    title: "Keluhan",
-    desc: "Sampaikan keluhan atau usulan",
-  },
-  {
-    icon: CalendarDays,
-    title: "Event",
-    desc: "Lihat dan ikuti kegiatan warga",
-  },
-  {
-    icon: Smartphone,
-    title: "PPOB",
-    desc: "Pulsa, Paket Data, Token Listrik",
-  },
-  {
-    icon: Recycle,
-    title: "Bank Sampah",
-    desc: "Setor sampah jadi saldo & poin",
-  },
-];
+import { serviceMenus } from "@/data/mockData";
+import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 export default function ServiceMenu() {
   return (
@@ -37,12 +10,13 @@ export default function ServiceMenu() {
 
       {/* Grid */}
       <div className="grid grid-cols-2 gap-3">
-        {services.map((service) => {
+        {serviceMenus.map((service) => {
           const Icon = service.icon;
 
           return (
-            <button
+            <Link
               key={service.title}
+              href={service.href}
               className="
                 rounded-2xl
                 bg-white
@@ -58,7 +32,7 @@ export default function ServiceMenu() {
               </p>
 
               <p className="mt-1 text-xs text-gray-500">{service.desc}</p>
-            </button>
+            </Link>
           );
         })}
       </div>

@@ -1,3 +1,10 @@
+import {
+  CalendarDays,
+  MessageSquare,
+  Recycle,
+  Smartphone,
+} from "lucide-react";
+
 export const userData = {
   name: "DJ",
   address: "Perumahan D'Palm Residence",
@@ -22,24 +29,28 @@ export const billingData = {
 
 export const serviceMenus = [
   {
-    icon: "MessageSquare",
+    icon: MessageSquare,
     title: "Keluhan",
     desc: "Sampaikan keluhan atau usulan",
+    href: "/keluhan",
   },
   {
-    icon: "CalendarDays",
+    icon: CalendarDays,
     title: "Event",
     desc: "Lihat dan ikuti kegiatan warga",
+    href: "/event",
   },
   {
-    icon: "Smartphone",
+    icon: Smartphone,
     title: "PPOB",
     desc: "Pulsa, Paket Data, Token Listrik",
+    href: "#",
   },
   {
-    icon: "Recycle",
+    icon: Recycle,
     title: "Bank Sampah",
     desc: "Setor sampah jadi saldo & poin",
+    href: "#",
   },
 ];
 

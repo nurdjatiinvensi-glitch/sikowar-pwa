@@ -7,6 +7,7 @@ import { Calendar, ChevronRight, MapPin } from "lucide-react";
 import AppLayout from "@/components/layout/AppLayout";
 import HeaderBackground from "@/components/layout/HeaderBackground";
 
+import BackButton from "@/components/layout/BackButton";
 import { announcementData } from "@/data/announcementData";
 
 export default function AnnouncementsPage() {
@@ -15,9 +16,7 @@ export default function AnnouncementsPage() {
       {/* HEADER */}
       <HeaderBackground variant="default">
         <div className="px-6 pt-8 pb-8 text-white">
-          <Link href="/" className="text-sm text-white/90">
-            ← Kembali
-          </Link>
+          <BackButton />
 
           <h1 className="mt-4 text-3xl font-bold">Pengumuman</h1>
 
