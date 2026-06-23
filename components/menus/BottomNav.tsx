@@ -55,10 +55,13 @@ export default function BottomNav({
         </Link>
 
         {/* Laporan */}
-        <button className="flex flex-col items-center">
-          <FileText size={22} className="text-gray-500" />
+        <Link href="/coming-soon" className="flex flex-col items-center">
+          <FileText
+            size={22}
+            className={active === "report" ? "text-green-700" : "text-gray-500"}
+          />
           <span className="mt-1 text-[11px] text-gray-500">Laporan</span>
-        </button>
+        </Link>
 
         {/* Spacer Tengah */}
         <div className="w-16" />

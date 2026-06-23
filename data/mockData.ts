@@ -44,13 +44,13 @@ export const serviceMenus = [
     icon: Smartphone,
     title: "PPOB",
     desc: "Pulsa, Paket Data, Token Listrik",
-    href: "#",
+    href: "/coming-soon",
   },
   {
     icon: Recycle,
     title: "Bank Sampah",
     desc: "Setor sampah jadi saldo & poin",
-    href: "#",
+    href: "/coming-soon",
   },
 ];
 
