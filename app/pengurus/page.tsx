@@ -10,7 +10,7 @@ import { pengurusData } from "@/data/pengurusData";
 
 export default function PengurusPage() {
   return (
-    <AppLayout activeMenu="admin">
+    <AppLayout activeMenu="pengurus">
       {/* HEADER */}
       <HeaderBackground variant="default">
         <BackButton />

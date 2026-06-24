@@ -12,7 +12,7 @@ import { announcementData } from "@/data/announcementData";
 
 export default function AnnouncementsPage() {
   return (
-    <AppLayout activeMenu="home">
+    <AppLayout activeMenu="beranda">
       {/* HEADER */}
       <HeaderBackground variant="default">
         <div className="px-6 pt-8 pb-8 text-white">

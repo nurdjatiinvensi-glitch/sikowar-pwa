@@ -1,7 +1,7 @@
 "use client";
 
+import { eventData } from "@/data/eventData";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
 
 type CalendarDay = {
   id: string;
@@ -9,7 +9,15 @@ type CalendarDay = {
   currentMonth: boolean;
 };
 
-export default function MiniCalendar() {
+type MiniCalendarProps = {
+  selectedDate: string;
+  onDateSelect: (date: string) => void;
+};
+
+export default function MiniCalendar({
+  selectedDate,
+  onDateSelect,
+}: MiniCalendarProps) {
   const days = ["Min", "Sen", "Sel", "Rab", "Kam", "Jum", "Sab"];
 
   const dates: CalendarDay[] = [
@@ -51,10 +59,11 @@ export default function MiniCalendar() {
     { id: "30", day: 30, currentMonth: true },
   ];
 
-  const eventDates = [17, 23, 30];
-  const today = 17;
+  const eventDates = new Set(
+    eventData.map((event) => Number(event.date.split("-")[2])),
+  );
 
-  const [selectedDate, setSelectedDate] = useState("17");
+  const today = new Date().getDate();
 
   return (
     <div className="rounded-3xl bg-white p-5 shadow-sm">
@@ -81,7 +90,7 @@ export default function MiniCalendar() {
       {/* Date Grid */}
       <div className="grid grid-cols-7 gap-y-2">
         {dates.map((item) => {
-          const hasEvent = item.currentMonth && eventDates.includes(item.day);
+          const hasEvent = item.currentMonth && eventDates.has(item.day);
 
           const selected = selectedDate === item.id;
 
@@ -90,7 +99,7 @@ export default function MiniCalendar() {
           return (
             <button
               key={item.id}
-              onClick={() => setSelectedDate(item.id)}
+              onClick={() => onDateSelect(item.id)}
               className="
                 flex flex-col items-center
                 justify-center

@@ -6,7 +6,7 @@ import HeaderBackground from "@/components/layout/HeaderBackground";
 
 export default function ComingSoonPage() {
   return (
-    <AppLayout activeMenu="home">
+    <AppLayout activeMenu="beranda">
       <HeaderBackground variant="default">
         <div className="px-6 pt-4">
           <BackButton />

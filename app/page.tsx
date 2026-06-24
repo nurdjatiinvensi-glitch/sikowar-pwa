@@ -9,7 +9,7 @@ import ServiceMenu from "@/components/menus/ServiceMenu";
 
 export default function Home() {
   return (
-    <AppLayout activeMenu="home">
+    <AppLayout activeMenu="beranda">
       {/* HEADER */}
       <HomeHeaderSection />
 

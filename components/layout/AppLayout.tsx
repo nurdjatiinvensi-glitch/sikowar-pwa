@@ -9,13 +9,13 @@ import EmergencySheet from "@/components/sheets/EmergencySheet";
 type AppLayoutProps = {
   children: React.ReactNode;
   bottomNav?: boolean;
-  activeMenu?: "home" | "report" | "admin" | "profile";
+  activeMenu?: "beranda" | "laporan" | "pengurus" | "profile";
 };
 
 export default function AppLayout({
   children,
   bottomNav = true,
-  activeMenu = "home",
+  activeMenu = "beranda",
 }: AppLayoutProps) {
   const [showEmergency, setShowEmergency] = useState(false);
 

@@ -4,11 +4,11 @@ import { FileText, House, ShieldAlert, User, Users } from "lucide-react";
 
 type BottomNavProps = {
   onEmergencyClick?: () => void;
-  active?: "home" | "report" | "admin" | "profile";
+  active?: "beranda" | "laporan" | "pengurus" | "profile";
 };
 export default function BottomNav({
   onEmergencyClick,
-  active = "home",
+  active = "beranda",
 }: BottomNavProps) {
   return (
     <div
@@ -41,11 +41,13 @@ export default function BottomNav({
         <Link href="/" className="flex flex-col items-center">
           <House
             size={22}
-            className={active === "home" ? "text-green-700" : "text-gray-500"}
+            className={
+              active === "beranda" ? "text-green-700" : "text-gray-500"
+            }
           />
           <span
             className={
-              active === "home"
+              active === "beranda"
                 ? "mt-1 text-[11px] font-medium text-green-700"
                 : "mt-1 text-[11px] text-gray-500"
             }
@@ -58,9 +60,19 @@ export default function BottomNav({
         <Link href="/coming-soon" className="flex flex-col items-center">
           <FileText
             size={22}
-            className={active === "report" ? "text-green-700" : "text-gray-500"}
+            className={
+              active === "laporan" ? "text-green-900" : "text-gray-500"
+            }
           />
-          <span className="mt-1 text-[11px] text-gray-500">Laporan</span>
+          <span
+            className={
+              active === "laporan"
+                ? "mt-1 text-[11px] font-medium text-green-700"
+                : "mt-1 text-[11px] text-gray-500"
+            }
+          >
+            Laporan
+          </span>
         </Link>
 
         {/* Spacer Tengah */}
@@ -70,9 +82,19 @@ export default function BottomNav({
         <Link href="/pengurus" className="flex flex-col items-center">
           <Users
             size={22}
-            className={active === "admin" ? "text-green-700" : "text-gray-500"}
+            className={
+              active === "pengurus" ? "text-green-700" : "text-gray-500"
+            }
           />
-          <span className="mt-1 text-[11px] text-gray-500">Pengurus</span>
+          <span
+            className={
+              active === "pengurus"
+                ? "mt-1 text-[11px] font-medium text-green-700"
+                : "mt-1 text-[11px] text-gray-500"
+            }
+          >
+            Pengurus
+          </span>
         </Link>
 
         {/* Profil */}
@@ -83,7 +105,15 @@ export default function BottomNav({
               active === "profile" ? "text-green-700" : "text-gray-500"
             }
           />
-          <span className="mt-1 text-[11px] text-gray-500">Profil</span>
+          <span
+            className={
+              active === "profile"
+                ? "mt-1 text-[11px] font-medium text-green-700"
+                : "mt-1 text-[11px] text-gray-500"
+            }
+          >
+            Profil
+          </span>
         </Link>
 
         {/* Emergency */}

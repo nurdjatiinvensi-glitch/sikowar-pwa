@@ -10,7 +10,7 @@ import { keluhanData } from "@/data/keluhanData";
 
 export default function KeluhanPage() {
   return (
-    <AppLayout activeMenu="home">
+    <AppLayout activeMenu="beranda">
       <HeaderBackground variant="default">
         <BackButton />
         <div className="px-6 pt-8 pb-8 text-white">
