@@ -3,6 +3,7 @@ import AppLayout from "@/components/layout/AppLayout";
 import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
 import { eventData } from "@/data/eventData";
+import { formatDate, formatTimeRange } from "@/lib/date";
 
 import { Calendar, Clock, MapPin, Phone, User } from "lucide-react";
 
@@ -33,7 +34,7 @@ export default async function EventDetailPage({ params }: Props) {
         <div className="px-6 pt-8 pb-8 text-white">
           <h1 className="text-3xl font-bold">{event.title}</h1>
 
-          <p className="mt-2 text-white/90">Agenda Kegiatan Warga</p>
+          <p className="mt-2 text-white/90">{formatDate(event.date)}</p>
         </div>
       </HeaderBackground>
 
@@ -42,14 +43,12 @@ export default async function EventDetailPage({ params }: Props) {
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <Calendar size={18} />
-            <span>{event.date}</span>
+            <span>{formatDate(event.date, true)}</span>
           </div>
 
           <div className="flex items-center gap-3">
             <Clock size={18} />
-            <span>
-              {event.startTime} - {event.endTime} WIB
-            </span>
+            <span>{formatTimeRange(event.startTime, event.endTime)}</span>
           </div>
 
           <div className="flex items-center gap-3">
