@@ -1,8 +1,7 @@
 "use client";
 
+import type { RSVPStatus } from "@/data/eventData";
 import { useState } from "react";
-
-type RSVPStatus = null | "hadir" | "tentatif" | "berhalangan";
 
 type EventRSVPProps = {
   defaultStatus?: RSVPStatus;

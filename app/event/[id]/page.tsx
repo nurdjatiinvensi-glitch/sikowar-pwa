@@ -3,7 +3,8 @@ import AppLayout from "@/components/layout/AppLayout";
 import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
 import { eventData } from "@/data/eventData";
-import { Calendar, Clock, MapPin } from "lucide-react";
+
+import { Calendar, Clock, MapPin, Phone, User } from "lucide-react";
 
 type Props = {
   params: Promise<{
@@ -32,13 +33,12 @@ export default async function EventDetailPage({ params }: Props) {
         <div className="px-6 pt-8 pb-8 text-white">
           <h1 className="text-3xl font-bold">{event.title}</h1>
 
-          <p className="mt-2 text-white/90">
-            {event.date} • {event.time}
-          </p>
+          <p className="mt-2 text-white/90">Agenda Kegiatan Warga</p>
         </div>
       </HeaderBackground>
 
       <div className="px-6 py-6">
+        {/* Informasi Event */}
         <div className="space-y-4">
           <div className="flex items-center gap-3">
             <Calendar size={18} />
@@ -47,21 +47,39 @@ export default async function EventDetailPage({ params }: Props) {
 
           <div className="flex items-center gap-3">
             <Clock size={18} />
-            <span>{event.time} WIB</span>
+            <span>
+              {event.startTime} - {event.endTime} WIB
+            </span>
           </div>
 
           <div className="flex items-center gap-3">
             <MapPin size={18} />
             <span>{event.location}</span>
           </div>
+
+          <div className="flex items-center gap-3">
+            <User size={18} />
+            <span>{event.pic}</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <Phone size={18} />
+            <span>{event.phone}</span>
+          </div>
         </div>
 
-        <div className="mt-8 rounded-2xl bg-white p-4 shadow">
-          <h2 className="mb-2 font-semibold">Deskripsi</h2>
+        {/* Deskripsi */}
+        <div className="mt-8 rounded-3xl bg-white p-5 shadow-sm">
+          <h2 className="mb-3 text-lg font-bold text-gray-800">Deskripsi</h2>
 
-          <p>{event.description}</p>
+          <p className="leading-7 text-gray-600">{event.description}</p>
         </div>
-        <EventRSVP totalAttendees={event.attendees} />
+
+        {/* RSVP */}
+        <EventRSVP
+          defaultStatus={event.myStatus}
+          totalAttendees={event.attendeeCount}
+        />
       </div>
     </AppLayout>
   );
