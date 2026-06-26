@@ -14,7 +14,7 @@ export default function AnnouncementDetailContent({ announcement }: Props) {
 
   return (
     <>
-      {announcement.category.includes("event") && (
+      {announcement.type === "event" && (
         <div className="mt-8">
           <h2 className="mb-3 font-semibold">Status Kehadiran</h2>
 

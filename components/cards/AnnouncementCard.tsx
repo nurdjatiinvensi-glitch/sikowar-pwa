@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { announcementData } from "@/data/announcementData";
+import { eventData } from "@/data/eventData";
 import { CalendarDays, ChevronRight, MapPin, Megaphone } from "lucide-react";
 
 export default function AnnouncementCard() {
@@ -15,6 +16,9 @@ export default function AnnouncementCard() {
   }, []);
 
   const item = announcementData[activeIndex];
+
+  const eventItem =
+    item.type === "event" ? eventData.find((e) => e.id === item.eventId) : null;
 
   const [touchStart, setTouchStart] = useState(0);
 
@@ -53,7 +57,11 @@ export default function AnnouncementCard() {
 
       {/* Card */}
       <Link
-        href={`/announcements/${item.id}`}
+        href={
+          item.type === "event"
+            ? `/event/${item.eventId}`
+            : `/announcements/${item.id}`
+        }
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
         className=" block rounded-3xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
@@ -73,18 +81,20 @@ export default function AnnouncementCard() {
 
           {/* Content */}
           <div className="flex-1">
-            <h4 className="font-bold text-gray-800">{item.title}</h4>
+            <h4 className="font-bold text-gray-800">
+              {eventItem?.title ?? item.title}
+            </h4>
 
             <div className="mt-2 flex items-center gap-2 text-xs text-gray-500">
               <CalendarDays size={14} />
               <span>
-                {item.date} | {item.time}
+                {eventItem?.date ?? item.date} | {eventItem?.time ?? item.time}
               </span>
             </div>
 
             <div className="mt-1 flex items-center gap-2 text-xs text-gray-500">
               <MapPin size={14} />
-              <span>{item.location}</span>
+              <span>{eventItem?.location ?? item.location}</span>
             </div>
           </div>
         </div>

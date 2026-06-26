@@ -1,9 +1,13 @@
-export type Announcement = {
+export interface Announcement {
   id: number;
+
+  type: "announcement" | "news" | "event";
+
+  eventId?: number;
+
   title: string;
-  category: string[];
   date: string;
   time: string;
   location: string;
   description: string;
-};
+}

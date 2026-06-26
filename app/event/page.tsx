@@ -7,6 +7,7 @@ import AppLayout from "@/components/layout/AppLayout";
 import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
 import { eventData } from "@/data/eventData";
+import Link from "next/link";
 
 export default function EventPage() {
   const [selectedDate, setSelectedDate] = useState("17");
@@ -38,16 +39,10 @@ export default function EventPage() {
         {selectedEvents.length > 0 ? (
           <div className="space-y-3">
             {selectedEvents.map((event) => (
-              <button
+              <Link
                 key={event.id}
-                className="
-          w-full
-          rounded-3xl
-          bg-white
-          p-4
-          text-left
-          shadow-sm
-        "
+                href={`/event/${event.id}`}
+                className="block w-full rounded-3xl bg-white p-4 text-left shadow-smbuka"
               >
                 <div className="flex items-start justify-between">
                   <div>
@@ -78,7 +73,7 @@ export default function EventPage() {
                 <p className="mt-3 text-sm font-medium text-green-700">
                   {event.time} WIB
                 </p>
-              </button>
+              </Link>
             ))}
           </div>
         ) : (

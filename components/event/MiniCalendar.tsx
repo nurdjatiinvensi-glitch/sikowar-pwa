@@ -63,7 +63,7 @@ export default function MiniCalendar({
     eventData.map((event) => Number(event.date.split("-")[2])),
   );
 
-  const today = new Date().getDate();
+  const today = 17;
 
   return (
     <div className="rounded-3xl bg-white p-5 shadow-sm">

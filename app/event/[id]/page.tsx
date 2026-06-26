@@ -1,9 +1,9 @@
+import EventRSVP from "@/components/event/EventRSVP";
 import AppLayout from "@/components/layout/AppLayout";
 import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
-import { announcementData } from "@/data/announcementData";
+import { eventData } from "@/data/eventData";
 import { Calendar, Clock, MapPin } from "lucide-react";
-import { redirect } from "next/navigation";
 
 type Props = {
   params: Promise<{
@@ -11,19 +11,15 @@ type Props = {
   }>;
 };
 
-export default async function AnnouncementDetailPage({ params }: Props) {
+export default async function EventDetailPage({ params }: Props) {
   const { id } = await params;
 
-  const announcement = announcementData.find((item) => item.id === Number(id));
+  const event = eventData.find((item) => item.id === Number(id));
 
-  if (announcement?.type === "event") {
-    redirect(`/event/${announcement.eventId}`);
-  }
-
-  if (!announcement) {
+  if (!event) {
     return (
       <div className="p-6">
-        <h1>Pengumuman tidak ditemukan</h1>
+        <h1>Event tidak ditemukan</h1>
       </div>
     );
   }
@@ -31,36 +27,41 @@ export default async function AnnouncementDetailPage({ params }: Props) {
   return (
     <AppLayout activeMenu="beranda">
       <HeaderBackground variant="default">
-        <div className="px-6 pt-8 pb-8 text-white">
-          <BackButton href="/announcements" />
-          <h1 className="mt-4 text-3xl font-bold">{announcement.title}</h1>
+        <BackButton href="/event" />
 
-          <p className="mt-2 text-white/90">Detail Pengumuman</p>
+        <div className="px-6 pt-8 pb-8 text-white">
+          <h1 className="text-3xl font-bold">{event.title}</h1>
+
+          <p className="mt-2 text-white/90">
+            {event.date} • {event.time}
+          </p>
         </div>
       </HeaderBackground>
+
       <div className="px-6 py-6">
-        <div className="mt-6 space-y-4">
+        <div className="space-y-4">
           <div className="flex items-center gap-3">
             <Calendar size={18} />
-            <span>{announcement.date}</span>
+            <span>{event.date}</span>
           </div>
 
           <div className="flex items-center gap-3">
             <Clock size={18} />
-            <span>{announcement.time}</span>
+            <span>{event.time} WIB</span>
           </div>
 
           <div className="flex items-center gap-3">
             <MapPin size={18} />
-            <span>{announcement.location}</span>
+            <span>{event.location}</span>
           </div>
         </div>
 
         <div className="mt-8 rounded-2xl bg-white p-4 shadow">
           <h2 className="mb-2 font-semibold">Deskripsi</h2>
 
-          <p>{announcement.description}</p>
+          <p>{event.description}</p>
         </div>
+        <EventRSVP totalAttendees={event.attendees} />
       </div>
     </AppLayout>
   );
