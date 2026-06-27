@@ -1,20 +1,13 @@
 "use client";
 
 import SettingCard from "@/components/cards/SettingCard";
+import NotificationButton from "@/components/common/NotificationButton";
 import AppLayout from "@/components/layout/AppLayout";
 import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
 import { profileData } from "@/data/profileData";
-import {
-  Bell,
-  House,
-  Info,
-  Lock,
-  LogOut,
-  Shield,
-  User,
-  Users,
-} from "lucide-react";
+
+import { House, Info, Lock, LogOut, Shield, User, Users } from "lucide-react";
 import { useState } from "react";
 
 export default function ProfilePage() {
@@ -26,35 +19,22 @@ export default function ProfilePage() {
         {/* HEADER */}
         <HeaderBackground variant="default">
           <BackButton />
+
           <div
             className="
-            shrink-0
-            rounded-b-[40px]
-            px-6
-            pt-6
-            pb-6
-            text-white
-          "
+              shrink-0
+              rounded-b-[40px]
+              px-6
+              pt-6
+              pb-6
+              text-white
+            "
           >
             {/* Top Bar */}
             <div className="mb-6 flex items-center justify-between">
               <h1 className="text-2xl font-bold">Profil Saya</h1>
 
-              <div className="relative">
-                <Bell size={28} />
-
-                <span
-                  className="
-      absolute
-      -right-1
-      -top-1
-      h-3
-      w-3
-      rounded-full
-      bg-red-500
-    "
-                />
-              </div>
+              <NotificationButton />
             </div>
 
             {/* Avatar */}
@@ -62,37 +42,37 @@ export default function ProfilePage() {
               <div className="relative">
                 <div
                   className="
-      flex
-      h-24
-      w-24
-      items-center
-      justify-center
-      rounded-full
-      border-4
-      border-white/40
-      bg-white/20
-      text-4xl
-      font-bold
-    "
+                    flex
+                    h-24
+                    w-24
+                    items-center
+                    justify-center
+                    rounded-full
+                    border-4
+                    border-white/40
+                    bg-white/20
+                    text-4xl
+                    font-bold
+                  "
                 >
                   NT
                 </div>
 
                 <button
                   className="
-      absolute
-      bottom-0
-      right-0
-      flex
-      h-10
-      w-10
-      items-center
-      justify-center
-      rounded-full
-      bg-white
-      text-gray-700
-      shadow-md
-    "
+                    absolute
+                    bottom-0
+                    right-0
+                    flex
+                    h-10
+                    w-10
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-white
+                    text-gray-700
+                    shadow-md
+                  "
                 >
                   📷
                 </button>
@@ -152,7 +132,7 @@ export default function ProfilePage() {
                 />
 
                 <SettingCard
-                  icon={<Bell size={22} />}
+                  icon={<Info size={22} />}
                   title="Notifikasi"
                   description="Pengaturan notifikasi aplikasi"
                 />

@@ -5,11 +5,15 @@ export type NotificationType =
   | "resident";
 
 export interface NotificationItem {
-  id: string;
-  type: NotificationType;
-  title: string;
-  message: string;
-  time: string;
-  unread: boolean;
+  notificationId: string;
+
+  targetType: NotificationType;
+
+  targetId: string;
+
+  createdAt: string;
+
+  isRead: boolean;
+
   section: "today" | "yesterday";
 }

@@ -7,6 +7,8 @@ type NotificationCardProps = {
   message: string;
   time: string;
   unread?: boolean;
+
+  onClick?: () => void;
 };
 
 function getIcon(type: NotificationCardProps["type"]) {
@@ -34,9 +36,29 @@ export default function NotificationCard({
   message,
   time,
   unread = false,
+  onClick,
 }: NotificationCardProps) {
   return (
-    <div className="flex items-start gap-3 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+    <div
+      onClick={onClick}
+      className="
+    flex
+    cursor-pointer
+    items-start
+    gap-3
+    rounded-2xl
+    border
+    border-gray-100
+    bg-white
+    p-4
+    shadow-sm
+    transition-all
+    duration-200
+    hover:shadow-md
+    hover:border-green-200
+    active:scale-[0.98]
+  "
+    >
       {/* Badge */}
       <div className="mt-1 flex flex-col items-center gap-2">
         {getIcon(type)}

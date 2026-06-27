@@ -1,7 +1,8 @@
 "use client";
 
+import NotificationButton from "@/components/common/NotificationButton";
 import { userData } from "@/data/mockData";
-import { Bell, Eye, EyeOff, Search } from "lucide-react";
+import { Eye, EyeOff, Search } from "lucide-react";
 import { useState } from "react";
 
 export default function Header() {
@@ -9,8 +10,6 @@ export default function Header() {
 
   return (
     <div className="px-6 pt-6 pb-8">
-      {/* Background Decoration */}
-
       {/* Top Bar */}
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-green-800">SiKoWar</h1>
@@ -18,34 +17,20 @@ export default function Header() {
         <div className="flex gap-3">
           <button
             className="
-              flex h-12 w-12 items-center justify-center
-              rounded-2xl bg-white shadow-md
+              flex
+              h-12
+              w-12
+              items-center
+              justify-center
+              rounded-2xl
+              bg-white
+              shadow-md
             "
           >
             <Search size={20} />
           </button>
 
-          <button
-            className="
-              relative
-              flex h-12 w-12 items-center justify-center
-              rounded-2xl bg-white shadow-md
-            "
-          >
-            <Bell size={20} />
-
-            {/* Badge */}
-            <span
-              className="
-                absolute
-                right-3
-                top-3
-                h-2 w-2
-                rounded-full
-                bg-red-500
-              "
-            />
-          </button>
+          <NotificationButton />
         </div>
       </div>
 
@@ -53,8 +38,14 @@ export default function Header() {
       <div className="mt-6 flex items-start gap-4">
         <div
           className="
-            flex h-12 w-12 items-center justify-center
-            rounded-full bg-white shadow-md
+            flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-full
+            bg-white
+            shadow-md
             text-2xl
           "
         >
@@ -69,9 +60,14 @@ export default function Header() {
           <button
             onClick={() => setShowAddress(!showAddress)}
             className="
-              mt-1 flex items-center gap-1
-              text-xs text-gray-500 hover:text-blue-700
-          "
+              mt-1
+              flex
+              items-center
+              gap-1
+              text-xs
+              text-gray-500
+              hover:text-blue-700
+            "
           >
             {showAddress ? <EyeOff size={16} /> : <Eye size={16} />}
             {showAddress ? "Sembunyikan Alamat" : "Tampilkan Alamat"}
@@ -81,13 +77,15 @@ export default function Header() {
             <div className="text-gray-500">
               <p>
                 {userData.address} {userData.blok}
-                {userData.no},
+                {userData.no}
               </p>
+
               <p>
-                {userData.jalan}, {userData.rt}/{userData.rw},
+                {userData.jalan}, {userData.rt}/{userData.rw}
               </p>
+
               <p>
-                {userData.kelurahan}, {userData.kecamatan},{userData.city},{" "}
+                {userData.kelurahan}, {userData.kecamatan}, {userData.city},{" "}
                 {userData.province}
               </p>
             </div>
