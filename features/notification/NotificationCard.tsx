@@ -1,11 +1,35 @@
+import { Bell, CalendarDays, UserRound, Wallet } from "lucide-react";
+
 type NotificationCardProps = {
+  type: "announcement" | "event" | "payment" | "resident";
+
   title: string;
   message: string;
   time: string;
   unread?: boolean;
 };
 
+function getIcon(type: NotificationCardProps["type"]) {
+  switch (type) {
+    case "announcement":
+      return <Bell size={20} className="text-blue-600" />;
+
+    case "event":
+      return <CalendarDays size={20} className="text-green-600" />;
+
+    case "payment":
+      return <Wallet size={20} className="text-orange-500" />;
+
+    case "resident":
+      return <UserRound size={20} className="text-purple-600" />;
+
+    default:
+      return null;
+  }
+}
+
 export default function NotificationCard({
+  type,
   title,
   message,
   time,
@@ -14,12 +38,10 @@ export default function NotificationCard({
   return (
     <div className="flex items-start gap-3 rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
       {/* Badge */}
-      <div className="mt-2">
-        {unread ? (
-          <div className="h-3 w-3 rounded-full bg-red-500" />
-        ) : (
-          <div className="h-3 w-3 rounded-full bg-gray-300" />
-        )}
+      <div className="mt-1 flex flex-col items-center gap-2">
+        {getIcon(type)}
+
+        {unread && <div className="h-2.5 w-2.5 rounded-full bg-red-500" />}
       </div>
 
       {/* Content */}
