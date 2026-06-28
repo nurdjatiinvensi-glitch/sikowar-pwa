@@ -1,6 +1,8 @@
 import {
   CalendarDays,
+  CreditCard,
   MessageSquare,
+  Package,
   Recycle,
   Smartphone,
 } from "lucide-react";
@@ -29,16 +31,28 @@ export const billingData = {
 
 export const serviceMenus = [
   {
-    icon: MessageSquare,
-    title: "Keluhan",
-    desc: "Sampaikan keluhan atau usulan",
-    href: "/keluhan",
+    icon: CreditCard,
+    title: "Pembayaran",
+    desc: "Iuran, Kas & Donasi",
+    href: "/payment",
+  },
+  {
+    icon: Package,
+    title: "Asset",
+    desc: "Inventaris & Peminjaman",
+    href: "/asset",
   },
   {
     icon: CalendarDays,
     title: "Event",
     desc: "Agenda dan kegiatan warga",
     href: "/event",
+  },
+  {
+    icon: MessageSquare,
+    title: "Keluhan",
+    desc: "Sampaikan keluhan atau usulan",
+    href: "/keluhan",
   },
   {
     icon: Smartphone,
