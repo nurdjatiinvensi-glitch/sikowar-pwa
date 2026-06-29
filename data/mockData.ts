@@ -1,12 +1,12 @@
 import {
   CalendarDays,
   CreditCard,
-  MessageSquare,
+  MessageSquareWarning,
   Package,
   Recycle,
   Smartphone,
   UserCheck,
-  Users,
+  Users
 } from "lucide-react";
 
 export const userData = {
@@ -57,12 +57,6 @@ export const serviceMenus = [
     href: "/event",
   },
   {
-    icon: MessageSquare,
-    title: "Keluhan",
-    desc: "Sampaikan keluhan atau usulan",
-    href: "/keluhan",
-  },
-  {
     icon: Smartphone,
     title: "PPOB",
     desc: "Pulsa, Paket Data, Token Listrik",
@@ -79,5 +73,11 @@ export const serviceMenus = [
   title: "Visitor",
   desc: "Data Tamu Komunitas",
   href: "/visitor",
+},
+{
+  icon: MessageSquareWarning,
+  title: "Keluhan",
+  desc: "Aspirasi & Laporan Warga",
+  href: "/complaint",
 },
 ];
