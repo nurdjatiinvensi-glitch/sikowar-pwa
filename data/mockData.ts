@@ -5,10 +5,11 @@ import {
   Package,
   Recycle,
   Smartphone,
+  Users,
 } from "lucide-react";
 
 export const userData = {
-  name: "DJ",
+  name: "Nurdjati Trihanggono",
   address: "Perumahan D'Palm Residence",
   blok: "N",
   no: "6",
@@ -43,6 +44,12 @@ export const serviceMenus = [
     href: "/asset",
   },
   {
+    icon: Users,
+    title: "Data Warga",
+    desc: "Data & Informasi Warga",
+    href: "/resident",
+  },
+  {
     icon: CalendarDays,
     title: "Event",
     desc: "Agenda dan kegiatan warga",
@@ -67,4 +74,3 @@ export const serviceMenus = [
     href: "/coming-soon",
   },
 ];
-
