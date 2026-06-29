@@ -1,25 +1,31 @@
-export type ResidentStatus =
-  | "active"
-  | "inactive";
-
-export type HouseStatus =
+export type HouseRole =
   | "owner"
-  | "rent";
+  | "tenant"
+  | "family"
+  | "helper";
+
+export type Relationship =
+  | "father"
+  | "mother"
+  | "child"
+  | "parent"
+  | "sibling"
+  | "helper";
 
 export interface ResidentItem {
   id: string;
 
-  name: string;
+  houseId: string;
+
+  fullName: string;
 
   nik: string;
 
-  address: string;
-
   phone: string;
 
-  houseStatus: HouseStatus;
+  houseRole: HouseRole;
 
-  residentStatus: ResidentStatus;
+  relationship: Relationship;
 
-  familyCount: number;
+  isLoginActive: boolean;
 }

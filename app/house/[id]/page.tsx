@@ -4,6 +4,8 @@ import HeaderBackground from "@/components/layout/HeaderBackground";
 
 import { houseData } from "@/features/house/houseData";
 
+import Link from "next/link";
+
 type Props = {
   params: Promise<{
     id: string;
@@ -73,19 +75,23 @@ export default async function HouseDetailPage({ params }: Props) {
             </div>
           </div>
 
-          <button
+          <Link
+            href={`/resident?houseId=${house.id}`}
             className="
-              mt-8
-              w-full
-              rounded-2xl
-              bg-green-700
-              py-4
-              font-semibold
-              text-white
-            "
+    mt-8
+    flex
+    w-full
+    items-center
+    justify-center
+    rounded-2xl
+    bg-green-700
+    py-4
+    font-semibold
+    text-white
+  "
           >
             Lihat Data Warga
-          </button>
+          </Link>
         </div>
       </div>
     </AppLayout>
