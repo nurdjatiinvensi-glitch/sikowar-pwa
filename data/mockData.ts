@@ -2,6 +2,7 @@ import {
   CalendarDays,
   CreditCard,
   House,
+  MailPlus,
   MessageSquareWarning,
   Package,
   Recycle,
@@ -86,5 +87,11 @@ export const serviceMenus = [
   title: "Keluhan",
   desc: "Aspirasi & Laporan Warga",
   href: "/complaint",
+},
+{
+  icon: MailPlus,
+  title: "Invitation",
+  desc: "Undangan Aktivasi Warga",
+  href: "/invitation",
 },
 ];
