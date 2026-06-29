@@ -29,7 +29,7 @@ export default async function EventDetailPage({ params }: Props) {
   return (
     <AppLayout activeMenu="beranda">
       <HeaderBackground variant="default">
-        <BackButton href="/event" />
+        <BackButton fallbackHref="/event" />
 
         <div className="px-6 pt-8 pb-8 text-white">
           <h1 className="text-3xl font-bold">{event.title}</h1>

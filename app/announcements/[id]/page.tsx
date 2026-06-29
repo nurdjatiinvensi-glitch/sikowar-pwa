@@ -32,7 +32,7 @@ export default async function AnnouncementDetailPage({ params }: Props) {
     <AppLayout activeMenu="beranda">
       <HeaderBackground variant="default">
         <div className="px-6 pt-8 pb-8 text-white">
-          <BackButton href="/announcements" />
+          <BackButton fallbackHref="/announcements" />
           <h1 className="mt-4 text-3xl font-bold">{announcement.title}</h1>
 
           <p className="mt-2 text-white/90">Detail Pengumuman</p>
