@@ -2,6 +2,7 @@ import {
   CalendarDays,
   CreditCard,
   House,
+  LogIn,
   MailPlus,
   MessageSquareWarning,
   Package,
@@ -99,5 +100,11 @@ export const serviceMenus = [
   title: "Aktivasi",
   desc: "Aktivasi Akun Warga",
   href: "/activation",
+},
+{
+  icon: LogIn,
+  title: "Login",
+  desc: "Masuk ke SiKoWar",
+  href: "/login",
 },
 ];
