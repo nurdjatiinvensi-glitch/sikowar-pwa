@@ -1,15 +1,25 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type BackButtonProps = {
-  href?: string;
+  fallbackHref?: string;
 };
 
-export default function BackButton({ href = "/" }: BackButtonProps) {
+export default function BackButton({ fallbackHref = "/" }: BackButtonProps) {
+  const router = useRouter();
+
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      router.back();
+    } else {
+      router.push(fallbackHref);
+    }
+  };
+
   return (
-    <Link href={href} className="text-sm text-white/90">
+    <button onClick={handleBack} className="text-sm text-white/90">
       ← Kembali
-    </Link>
+    </button>
   );
 }
