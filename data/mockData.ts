@@ -45,7 +45,7 @@ export const serviceMenus = [
     icon: CreditCard,
     title: "Pembayaran",
     desc: "Iuran, Kas & Donasi",
-    href: "/payment",
+    href: "/tagihan",
   },
   {
     icon: Package,
