@@ -27,7 +27,7 @@ export default async function PaymentDetailPage({ params }: Props) {
 
           <h1 className="mt-4 text-3xl font-bold">{payment.title}</h1>
 
-          <p className="mt-2 text-white/90">Detail Pembayaran</p>
+          <p className="mt-2 text-white/90">Detail Tagihan</p>
         </div>
       </HeaderBackground>
 
@@ -44,6 +44,14 @@ export default async function PaymentDetailPage({ params }: Props) {
               Jatuh Tempo : {payment.dueDate}
             </p>
           )}
+
+          <div className="mt-6 rounded-2xl bg-green-50 p-4">
+            <p className="text-sm text-gray-500">Status</p>
+
+            <p className="mt-1 font-semibold text-green-700">
+              {payment.status === "paid" ? "Lunas" : "Belum Lunas"}
+            </p>
+          </div>
 
           <button
             className="

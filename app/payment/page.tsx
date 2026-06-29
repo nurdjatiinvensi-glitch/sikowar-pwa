@@ -3,7 +3,12 @@
 import AppLayout from "@/components/layout/AppLayout";
 import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
-import PaymentContent from "@/features/payment/PaymentContent";
+
+import ActiveBillList from "@/features/payment/ActiveBillList";
+import PaymentFilter from "@/features/payment/components/PaymentFilter";
+import PaymentSummary from "@/features/payment/components/PaymentSummary";
+
+import UpcomingPayment from "@/features/payment/components/UpcomingPayment";
 import { paymentData } from "@/features/payment/paymentData";
 
 export default function PaymentPage() {
@@ -18,36 +23,23 @@ export default function PaymentPage() {
           <BackButton />
 
           <div className="px-6 pt-6 pb-8 text-white">
-            <h1 className="text-3xl font-bold">Payment</h1>
+            <h1 className="text-3xl font-bold">Tagihan</h1>
 
-            <p className="mt-1 text-white/90">Pembayaran dan Keuangan Warga</p>
+            <p className="mt-1 text-white/90">Pembayaran IPL & Kas Warga</p>
 
-            <div className="mt-6 rounded-3xl bg-white/20 p-5 backdrop-blur">
-              <p className="text-sm text-white/80">Total Tagihan</p>
-
-              <h2 className="mt-2 text-3xl font-bold">
-                Rp {totalTagihan.toLocaleString("id-ID")}
-              </h2>
-
-              <button
-                className="
-                  mt-5
-                  rounded-2xl
-                  bg-white
-                  px-5
-                  py-3
-                  font-semibold
-                  text-green-700
-                "
-              >
-                Bayar Sekarang
-              </button>
+            <div className="mt-6">
+              <PaymentSummary total={totalTagihan} />
             </div>
           </div>
         </HeaderBackground>
 
         <div className="flex-1 overflow-y-auto px-4 py-6 pb-28">
-          <PaymentContent />
+          <PaymentFilter />
+
+          <div className="mt-6">
+            <ActiveBillList />
+            <UpcomingPayment />
+          </div>
         </div>
       </div>
     </AppLayout>
