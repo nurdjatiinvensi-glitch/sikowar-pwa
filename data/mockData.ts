@@ -1,12 +1,13 @@
 import {
   CalendarDays,
   CreditCard,
+  House,
   MessageSquareWarning,
   Package,
   Recycle,
   Smartphone,
   UserCheck,
-  Users
+  Users,
 } from "lucide-react";
 
 export const userData = {
@@ -32,6 +33,12 @@ export const billingData = {
 };
 
 export const serviceMenus = [
+  {
+  icon: House,
+  title: "Data Rumah",
+  desc: "Master Data Rumah",
+  href: "/house",
+  },
   {
     icon: CreditCard,
     title: "Pembayaran",
@@ -64,8 +71,8 @@ export const serviceMenus = [
   },
   {
     icon: Recycle,
-    title: "Bank Sampah",
-    desc: "Setor sampah jadi saldo & poin",
+    title: "Minyak Jelantah",
+    desc: "Setor Jelantah jadi saldo & poin",
     href: "/coming-soon",
   },
   {
