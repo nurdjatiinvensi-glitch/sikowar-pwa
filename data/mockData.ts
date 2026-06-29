@@ -5,6 +5,7 @@ import {
   Package,
   Recycle,
   Smartphone,
+  UserCheck,
   Users,
 } from "lucide-react";
 
@@ -73,4 +74,10 @@ export const serviceMenus = [
     desc: "Setor sampah jadi saldo & poin",
     href: "/coming-soon",
   },
+  {
+  icon: UserCheck,
+  title: "Visitor",
+  desc: "Data Tamu Komunitas",
+  href: "/visitor",
+},
 ];

@@ -2,7 +2,7 @@ import AppLayout from "@/components/layout/AppLayout";
 import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
 
-import { residentData } from "@/features/resident/residentData";
+import { visitorData } from "@/features/visitor/visitorData";
 
 type Props = {
   params: Promise<{
@@ -10,14 +10,20 @@ type Props = {
   }>;
 };
 
-export default async function ResidentDetailPage({ params }: Props) {
+export default async function VisitorDetailPage({ params }: Props) {
   const { id } = await params;
 
-  const resident = residentData.find((item) => item.id === id);
+  const visitor = visitorData.find((item) => item.id === id);
 
-  if (!resident) {
-    return <div className="p-6">Data warga tidak ditemukan</div>;
+  if (!visitor) {
+    return <div className="p-6">Visitor tidak ditemukan</div>;
   }
+
+  const statusLabel = {
+    waiting: "Menunggu",
+    "checked-in": "Sudah Masuk",
+    "checked-out": "Sudah Keluar",
+  };
 
   return (
     <AppLayout activeMenu="beranda">
@@ -25,9 +31,9 @@ export default async function ResidentDetailPage({ params }: Props) {
         <div className="px-6 pt-8 pb-8 text-white">
           <BackButton />
 
-          <h1 className="mt-4 text-3xl font-bold">{resident.name}</h1>
+          <h1 className="mt-4 text-3xl font-bold">{visitor.visitorName}</h1>
 
-          <p className="mt-2 text-white/90">Detail Warga</p>
+          <p className="mt-2 text-white/90">Detail Visitor</p>
         </div>
       </HeaderBackground>
 
@@ -35,32 +41,30 @@ export default async function ResidentDetailPage({ params }: Props) {
         <div className="rounded-3xl bg-white p-6 shadow-sm">
           <div className="space-y-4">
             <div className="flex justify-between">
-              <span>NIK</span>
-              <span className="font-semibold">{resident.nik}</span>
+              <span>Nama</span>
+              <span className="font-semibold">{visitor.visitorName}</span>
             </div>
 
             <div className="flex justify-between">
-              <span>Alamat</span>
-              <span className="font-semibold">{resident.address}</span>
+              <span>Tujuan</span>
+              <span className="font-semibold">{visitor.destination}</span>
             </div>
 
             <div className="flex justify-between">
-              <span>No. HP</span>
-              <span className="font-semibold">{resident.phone}</span>
+              <span>Keperluan</span>
+              <span className="font-semibold">{visitor.purpose}</span>
             </div>
 
             <div className="flex justify-between">
-              <span>Status Rumah</span>
+              <span>Status</span>
               <span className="font-semibold">
-                {resident.houseStatus === "owner" ? "Pemilik" : "Kontrak"}
+                {statusLabel[visitor.status]}
               </span>
             </div>
 
             <div className="flex justify-between">
-              <span>Anggota Keluarga</span>
-              <span className="font-semibold">
-                {resident.familyCount} Orang
-              </span>
+              <span>Tanggal</span>
+              <span className="font-semibold">{visitor.visitDate}</span>
             </div>
           </div>
 
@@ -75,7 +79,7 @@ export default async function ResidentDetailPage({ params }: Props) {
               text-white
             "
           >
-            Lihat Kartu Keluarga
+            Setujui Visitor
           </button>
         </div>
       </div>
