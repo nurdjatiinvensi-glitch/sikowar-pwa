@@ -94,4 +94,10 @@ export const serviceMenus = [
   desc: "Undangan Aktivasi Warga",
   href: "/invitation",
 },
+{
+  icon: UserCheck,
+  title: "Aktivasi",
+  desc: "Aktivasi Akun Warga",
+  href: "/activation",
+},
 ];
