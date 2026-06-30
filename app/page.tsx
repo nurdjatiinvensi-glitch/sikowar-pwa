@@ -1,26 +1,17 @@
 "use client";
 
-import AnnouncementCard from "@/components/cards/AnnouncementCard";
-import BillingCard from "@/components/cards/BillingCard";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-import AppLayout from "@/components/layout/AppLayout";
-import HomeHeaderSection from "@/components/layout/HomeHeaderSection";
-import ServiceMenu from "@/components/menus/ServiceMenu";
+export default function RootPage() {
+  const router = useRouter();
 
-export default function Home() {
-  return (
-    <AppLayout activeMenu="beranda">
-      {/* HEADER */}
-      <HomeHeaderSection />
+  useEffect(() => {
+    // TODO:
+    // nanti cek token login
 
-      {/* CONTENT */}
-      <div className="mt-4 px-4">
-        <BillingCard />
+    router.replace("/login");
+  }, [router]);
 
-        <AnnouncementCard />
-
-        <ServiceMenu />
-      </div>
-    </AppLayout>
-  );
+  return null;
 }
