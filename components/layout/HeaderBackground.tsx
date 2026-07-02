@@ -9,7 +9,7 @@ export default function HeaderBackground({
 }: HeaderBackgroundProps) {
   const bgImage =
     variant === "home"
-      ? "/images/header-home.png"
+      ? "/images/header-beranda.png"
       : "/images/header-default.png";
 
   return (
