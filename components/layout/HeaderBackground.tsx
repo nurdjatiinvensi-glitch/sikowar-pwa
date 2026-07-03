@@ -14,32 +14,12 @@ export default function HeaderBackground({
 
   return (
     <div
-      className="
-        relative
-        overflow-hidden
-        rounded-b-[40px]
-        bg-cover
-        bg-center
-        bg-no-repeat
-      "
+      className="relative z-20 overflow-hidden rounded-b-[40px] bg-cover bg-center bg-no-repeat h-45"
       style={{
         backgroundImage: `url(${bgImage})`,
-        minHeight: variant === "home" ? "320px" : "240px",
       }}
     >
-      {/* overlay biar tulisan tetap kebaca */}
-      <div
-        className="
-          absolute
-          inset-0
-          bg-linear-to-b
-          from-green-900/25
-          via-green-800/10
-          to-green-900/40
-        "
-      />
-
-      <div className="relative z-10">{children}</div>
+      <div className="bg-linear-to-b from-black/10 to-black/5">{children}</div>
     </div>
   );
 }

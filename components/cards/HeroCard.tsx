@@ -49,7 +49,7 @@ export default function HeroCard() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden -mt-20 rounded-4xl bg-linear-to-br from-green-600 via-emerald-800 to-emerald-950 px-6 py-4 text-white shadow-[0_15px_35px_rgba(0,0,0,0.25)]">
+    <div className="relative overflow-hidden rounded-4xl bg-linear-to-br from-green-600 via-emerald-800 to-emerald-950 px-6 py-4 text-white shadow-[0_15px_35px_rgba(0,0,0,0.25)]">
       {/* Header */}
       <div className="relative z-10 flex items-center gap-2">
         <p className="text-lg font-semibold">SiKoWar Cash</p>
