@@ -1,17 +1,15 @@
 "use client";
 
 import { userData } from "@/data/mockData";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 
 export default function ProfileCard() {
+  const [showAddress, setShowAddress] = useState(true);
+
   return (
-    <div
-      className="relative z-0 mx-4 mb-5 -mt-10 rounded-b-[40px] bg-white shadow-lg p-4"
-      style={{
-        transform: "translateY(-35px)",
-      }}
-    >
-      <div className="mt-6 flex items-center gap-2">
+    <div className="relative z-0 mx-4 mb-0 -mt-10 rounded-b-[40px] bg-white shadow-lg px-4 pt-6 pb-6">
+      <div className="mt-0 flex items-center gap-4">
         {/* Avatar */}
         <div
           className="
@@ -39,23 +37,43 @@ export default function ProfileCard() {
             {userData.name}
           </h2>
 
-          <button
-            className="
-              mt-1
-              flex
-              items-center
-              gap-1
-              text-sm
-              text-gray-500
-            "
-          >
-            <span className="truncate">
-              {userData.rt}/{userData.rw} • {userData.address} {userData.blok}
-              {userData.no}
-            </span>
+          <div className="mt-1">
+            <div className="flex items-center gap-2">
+              <button
+                className="
+    flex
+    min-w-0
+    flex-1
+    items-center
+    justify-start
+    gap-1
+    text-sm
+    text-gray-500
+  "
+              >
+                <span className="min-w-0 flex-1  text-left truncate">
+                  {showAddress
+                    ? `${userData.rt}/${userData.rw} • ${userData.address} ${userData.blok}${userData.no}`
+                    : `${userData.rt}/${userData.rw} • ***************`}
+                </span>
 
-            <ChevronDown size={15} />
-          </button>
+                <ChevronDown size={15} />
+              </button>
+
+              <button
+                onClick={() => setShowAddress(!showAddress)}
+                className="
+    shrink-0
+    rounded-full
+    p-2
+    text-gray-500
+    hover:bg-gray-100
+  "
+              >
+                {showAddress ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

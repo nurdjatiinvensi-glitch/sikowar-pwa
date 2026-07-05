@@ -14,7 +14,7 @@ export default function HeaderBackground({
 
   return (
     <div
-      className="relative z-20 overflow-hidden rounded-b-[40px] bg-cover bg-center bg-no-repeat h-45"
+      className="relative z-20 h-56 overflow-hidden bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: `url(${bgImage})`,
       }}
