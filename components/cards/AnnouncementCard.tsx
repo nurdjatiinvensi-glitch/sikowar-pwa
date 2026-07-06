@@ -53,7 +53,9 @@ export default function AnnouncementCard() {
     >
       {/* Header */}
       <div className="mb-3 flex items-center justify-between px-5">
-        <h3 className="text-lg font-bold text-gray-800">Pengumuman Terbaru</h3>
+        <h3 className="text-lg font-semibold text-gray-900">
+          Pengumuman Terbaru
+        </h3>
 
         <Link
           href="/announcements"
@@ -94,7 +96,7 @@ export default function AnnouncementCard() {
               flex h-20 w-20 shrink-0
               items-center justify-center
               rounded-2xl
-              bg-green-100/80
+              bg-green-200
             "
           >
             <Megaphone size={36} className="text-green-700" />
