@@ -41,9 +41,18 @@ export default function AnnouncementCard() {
   };
 
   return (
-    <div className="mt-5">
+    <div
+      className="
+    mt-5
+    rounded-3xl
+    bg-white
+    pt-5
+    pb-5
+    shadow-[0_8px_30px_rgba(0,0,0,0.08)]
+  "
+    >
       {/* Header */}
-      <div className="mb-3 flex items-center justify-between">
+      <div className="mb-3 flex items-center justify-between px-5">
         <h3 className="text-lg font-bold text-gray-800">Pengumuman Terbaru</h3>
 
         <Link
@@ -64,16 +73,28 @@ export default function AnnouncementCard() {
         }
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
-        className=" block rounded-3xl bg-white p-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)]"
+        className="
+    relative
+    block
+    mx-2
+    overflow-hidden
+    rounded-3xl
+    p-6
+  "
+        style={{
+          backgroundImage: "url('/images/announcement-bg.png')",
+          backgroundSize: "106% 100%",
+          backgroundPosition: "center",
+        }}
       >
-        <div className="flex items-center gap-4">
+        <div className="relative z-10 flex items-center gap-4">
           {/* Thumbnail */}
           <div
             className="
               flex h-20 w-20 shrink-0
               items-center justify-center
               rounded-2xl
-              bg-green-50
+              bg-green-100/80
             "
           >
             <Megaphone size={36} className="text-green-700" />
@@ -101,7 +122,7 @@ export default function AnnouncementCard() {
       </Link>
 
       {/* Indicator */}
-      <div className="mt-3 flex items-center justify-center gap-2">
+      <div className="mt-3 flex items-center justify-center gap-2 px-5">
         {announcementData.map((_, index) => (
           <button
             key={index}
