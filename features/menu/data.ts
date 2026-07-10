@@ -90,7 +90,7 @@ export const menuData: MenuItem[] = [
     title: "PPOB",
     href: "/ppob",
     icon: Smartphone,
-    color: "green",
+    color: "blue",
     isShortcut: false,
   },
   {
@@ -98,7 +98,7 @@ export const menuData: MenuItem[] = [
     title: "Minyak Jelantah",
     href: "/oil",
     icon: Recycle,
-    color: "green",
+    color: "orange",
     isShortcut: false,
   },
   {
@@ -106,7 +106,7 @@ export const menuData: MenuItem[] = [
     title: "Visitor",
     href: "/visitor",
     icon: UserRound,
-    color: "green",
+    color: "teal",
     isShortcut: false,
   },
   {
@@ -114,7 +114,7 @@ export const menuData: MenuItem[] = [
     title: "Invitation",
     href: "/invitation",
     icon: UserRoundPlus,
-    color: "green",
+    color: "pink",
     isShortcut: false,
   },
   {
@@ -122,7 +122,7 @@ export const menuData: MenuItem[] = [
     title: "Aktivasi",
     href: "/activation",
     icon: UserCheck,
-    color: "green",
+    color: "indigo",
     isShortcut: false,
   },
   {
@@ -130,7 +130,7 @@ export const menuData: MenuItem[] = [
     title: "Login",
     href: "/login",
     icon: LogIn,
-    color: "green",
+    color: "gray",
     isShortcut: false,
   },
 ];

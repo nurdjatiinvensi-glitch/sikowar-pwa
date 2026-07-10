@@ -13,7 +13,11 @@ export type MenuItem = {
     | "purple"
     | "blue"
     | "yellow"
-    | "teal";
+    | "teal"
+    | "orange"
+    | "pink"
+    | "indigo"
+    | "gray";
 
   isShortcut: boolean;
 };

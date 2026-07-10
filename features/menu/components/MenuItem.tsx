@@ -26,6 +26,22 @@ const colorMap = {
     bg: "bg-yellow-100",
     icon: "text-yellow-600",
   },
+  orange: {
+    bg: "bg-orange-100",
+    icon: "text-orange-600",
+  },
+  pink: {
+    bg: "bg-pink-100",
+    icon: "text-pink-600",
+  },
+  indigo: {
+    bg: "bg-indigo-100",
+    icon: "text-indigo-600",
+  },
+  gray: {
+    bg: "bg-gray-100",
+    icon: "text-gray-600",
+  },
 };
 
 type Props = {
@@ -37,7 +53,18 @@ export default function MenuItem({ item }: Props) {
   const color = colorMap[item.color];
 
   return (
-    <Link href={item.href} className="flex flex-col items-center">
+    <Link
+      href={item.href}
+      className="
+    group
+    flex
+    flex-col
+    items-center
+    transition-all
+    duration-150
+    active:scale-95
+  "
+    >
       <div
         className={`
           flex
@@ -47,6 +74,10 @@ export default function MenuItem({ item }: Props) {
           justify-center
           rounded-full
           ${color.bg}
+          transition-all
+          duration-200
+          group-hover:scale-105
+          group-active:scale-95
         `}
       >
         <Icon size={26} className={color.icon} />
