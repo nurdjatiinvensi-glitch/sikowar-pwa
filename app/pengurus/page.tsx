@@ -1,38 +1,33 @@
 "use client";
 
 import AppLayout from "@/components/layout/AppLayout";
-import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
+import ScrollContainer from "@/components/layout/ScrollContainer";
 import PengurusContent from "@/features/pengurus/PengurusContent";
-import Link from "next/link";
+import PengurusDetailSheet from "@/features/pengurus/components/PengurusDetailSheet";
+import type { PengurusItem } from "@/features/pengurus/types";
+import { useState } from "react";
 
 export default function PengurusPage() {
+  const [selectedPengurus, setSelectedPengurus] = useState<PengurusItem | null>(
+    null,
+  );
+
   return (
-    <AppLayout activeMenu="beranda">
-      <div className="flex h-screen flex-col bg-white">
-        <HeaderBackground variant="default">
-          <BackButton />
-          <div className="px-6 pt-8 pb-8 text-white">
-            <h1 className="text-3xl font-bold">Dashboard Pengurus</h1>
+    <AppLayout activeMenu="pengurus" hideBottomNav={selectedPengurus !== null}>
+      <HeaderBackground variant="default" title="Pengurus" showBackButton />
 
-            <p className="mt-2 text-white/90">Kelola Komunitas dengan mudah</p>
-
-            <Link href="/pengurus/approval">
-              <div className="mt-6 rounded-3xl bg-white/20 p-5 backdrop-blur">
-                <p className="text-sm text-white/80">Pending Registrasi</p>
-
-                <h2 className="mt-2 text-4xl font-bold">2</h2>
-
-                <p className="mt-2 text-sm">Klik untuk melihat daftar</p>
-              </div>
-            </Link>
-          </div>
-        </HeaderBackground>
-
-        <div className="flex-1 overflow-y-auto px-4 py-6 pb-28">
-          <PengurusContent />
+      <ScrollContainer>
+        <div className="px-4 py-6">
+          <PengurusContent onItemClick={(item) => setSelectedPengurus(item)} />
         </div>
-      </div>
+      </ScrollContainer>
+
+      <PengurusDetailSheet
+        open={selectedPengurus !== null}
+        item={selectedPengurus}
+        onClose={() => setSelectedPengurus(null)}
+      />
     </AppLayout>
   );
 }
