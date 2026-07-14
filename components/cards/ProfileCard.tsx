@@ -8,7 +8,7 @@ export default function ProfileCard() {
   const [showAddress, setShowAddress] = useState(true);
 
   return (
-    <div className="relative z-0 mx-0 mb-6 -mt-4 rounded-b-2xl bg-white shadow-lg px-4 pt-7 pb-3">
+    <div className="relative z-0 mx-0 mb-0 -mt-4 rounded-b-2xl bg-white shadow-lg px-4 pt-7 pb-3">
       <div className="mt-0 flex items-center gap-4">
         {/* Avatar */}
         <div

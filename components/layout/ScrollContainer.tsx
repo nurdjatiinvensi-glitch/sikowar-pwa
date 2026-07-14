@@ -9,6 +9,7 @@ export default function ScrollContainer({ children }: ScrollContainerProps) {
         h-full
         overflow-y-auto
         overscroll-contain
+        hide-scrollbar
         pb-24
       "
     >

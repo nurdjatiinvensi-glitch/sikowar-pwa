@@ -1,5 +1,6 @@
-import { DashboardItem as DashboardItemType } from "@/features/dashboard/types";
-import { ChevronRight } from "lucide-react";
+import Link from "next/link";
+
+import type { DashboardItem as DashboardItemType } from "../types";
 
 type Props = {
   item: DashboardItemType;
@@ -22,89 +23,75 @@ const colorMap = {
     bg: "bg-purple-100",
     icon: "text-purple-600",
   },
-};
+} as const;
 
 export default function DashboardItem({ item }: Props) {
   const Icon = item.icon;
+
   const color = colorMap[item.color];
 
-  return (
+  const content = (
     <div
       className="
-      min-h-30
-        rounded-2xl
+        flex
+        h-24
+        rounded-3xl
         border
         border-gray-100
         bg-white
-        p-4
+        px-4
         shadow-sm
+        transition-all
+        duration-200
+        active:scale-95
       "
     >
-      <div className="flex h-full">
-        {/* 25% ICON */}
-        <div className="flex w-16 items-start justify-center pt-1">
+      <div className="flex w-14 items-center">
+        <div className="-ml-2">
           <div
             className={`
-              flex
-              h-12
-              w-12
-              items-center
-              justify-center
-              rounded-full
-              ${color.bg}
-            `}
+        flex
+        h-14
+        w-14
+        items-center
+        justify-center
+        rounded-full
+        ${color.bg}
+      `}
           >
-            <Icon size={22} className={color.icon} />
+            <Icon size={28} className={color.icon} />
           </div>
         </div>
+      </div>
 
-        {/* 75% CONTENT */}
-        <div className="flex flex-1 flex-col justify-center">
-          <p className="text-xs font-medium text-gray-500">{item.title}</p>
+      <div className="flex flex-1 flex-col justify-center">
+        <p
+          className="
+            whitespace-nowrap
+            text-[15px]
+            font-medium
+            text-gray-500
+          "
+        >
+          {item.title}
+        </p>
 
-          {item.layout === "currency" ? (
-            <>
-              <h3 className="mt-1 text-xl font-bold text-gray-900 whitespace-nowrap">
-                {item.value}
-              </h3>
-            </>
-          ) : item.layout === "inline" ? (
-            <div className="mt-1 flex items-center justify-between">
-              <div className="flex items-end gap-1">
-                <h3 className="text-xl font-bold text-gray-900">
-                  {item.value}
-                </h3>
-
-                <span className="pb-1 text-sm text-gray-500">
-                  {item.subtitle}
-                </span>
-              </div>
-
-              {item.clickable && (
-                <ChevronRight size={16} className="text-gray-400" />
-              )}
-            </div>
-          ) : (
-            <>
-              <h3 className="mt-1 text-2xl font-bold text-gray-900 whitespace-nowrap">
-                {item.value}
-              </h3>
-
-              <div className="mt-1 flex items-center justify-between">
-                {item.subtitle ? (
-                  <p className="text-xs text-gray-500">{item.subtitle}</p>
-                ) : (
-                  <span />
-                )}
-
-                {item.clickable && (
-                  <ChevronRight size={16} className="text-gray-400" />
-                )}
-              </div>
-            </>
-          )}
-        </div>
+        <h3
+          className="
+            mt-2
+            text-[18px]
+            font-bold
+            leading-none
+            text-gray-900
+          "
+        >
+          {item.value}
+        </h3>
       </div>
     </div>
   );
+
+  if (!item.href) return content;
+
+  return <Link href={item.href}>{content}</Link>;
 }
