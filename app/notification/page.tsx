@@ -61,7 +61,7 @@ export default function NotificationPage() {
   return (
     <AppLayout activeMenu="profile">
       <div className="flex h-screen flex-col bg-white">
-        <HeaderBackground variant="default">
+        <HeaderBackground variant="page">
           <BackButton />
 
           <div className="px-6 pt-6 pb-6 text-white">

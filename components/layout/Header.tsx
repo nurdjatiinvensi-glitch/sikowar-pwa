@@ -1,6 +1,6 @@
 "use client";
 
-import NotificationButton from "@/components/common/NotificationButton";
+import NotificationButton from "@/features/notification/components/NotificationButton";
 import { Search } from "lucide-react";
 
 export default function Header() {

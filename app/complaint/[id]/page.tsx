@@ -1,6 +1,6 @@
 import AppLayout from "@/components/layout/AppLayout";
-import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
+import PageContent from "@/components/ui/PageContent";
 
 import { complaintData } from "@/features/complaint/complaintData";
 
@@ -26,18 +26,30 @@ export default async function ComplaintDetailPage({ params }: Props) {
   };
 
   return (
-    <AppLayout activeMenu="beranda">
-      <HeaderBackground variant="default">
-        <div className="px-6 pt-8 pb-8 text-white">
-          <BackButton />
+    <AppLayout
+      activeMenu="beranda"
+      header={
+        <HeaderBackground
+          variant="page"
+          title="Detail Keluhan"
+          showBackButton
+        />
+      }
+    >
+      <PageContent className="px-4 pt-4 pb-28">
+        {/* Hero Card */}
+        <div className="-mt-2 mb-6 rounded-3xl bg-white px-6 py-5 shadow-sm">
+          <span className="text-sm font-medium text-green-700">
+            Keluhan Warga
+          </span>
 
-          <h1 className="mt-4 text-3xl font-bold">{complaint.title}</h1>
+          <h1 className="mt-2 text-2xl font-bold text-gray-900">
+            {complaint.title}
+          </h1>
 
-          <p className="mt-2 text-white/90">Detail Keluhan</p>
+          <p className="mt-2 text-gray-500">{complaint.category}</p>
         </div>
-      </HeaderBackground>
 
-      <div className="px-6 py-6">
         <div className="rounded-3xl bg-white p-6 shadow-sm">
           <div className="space-y-4">
             <div className="flex justify-between">
@@ -77,7 +89,7 @@ export default async function ComplaintDetailPage({ params }: Props) {
             Lihat Progress
           </button>
         </div>
-      </div>
+      </PageContent>
     </AppLayout>
   );
 }

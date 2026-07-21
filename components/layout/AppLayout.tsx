@@ -8,6 +8,7 @@ import EmergencySheet from "@/components/sheets/EmergencySheet";
 
 type AppLayoutProps = {
   children: React.ReactNode;
+  header?: React.ReactNode;
   bottomNav?: boolean;
   hideBottomNav?: boolean;
   activeMenu?: "beranda" | "laporan" | "pengurus" | "profile";
@@ -15,6 +16,7 @@ type AppLayoutProps = {
 
 export default function AppLayout({
   children,
+  header,
   bottomNav = true,
   hideBottomNav = false,
   activeMenu = "beranda",
@@ -24,10 +26,21 @@ export default function AppLayout({
   return (
     <PageContainer>
       <div className="relative flex h-full flex-col">
-        {/* Main Content */}
-        <main className="flex-1 overflow-hidden">{children}</main>
+        <main className="flex flex-1 flex-col overflow-hidden">
+          {header}
 
-        {/* Bottom Navigation */}
+          <div
+            className="
+              min-h-0
+              flex-1
+              overflow-y-auto
+              hide-scrollbar
+            "
+          >
+            {children}
+          </div>
+        </main>
+
         {bottomNav && !hideBottomNav && (
           <BottomNav
             active={activeMenu}
@@ -35,7 +48,6 @@ export default function AppLayout({
           />
         )}
 
-        {/* Global Emergency Sheet */}
         <EmergencySheet
           isOpen={showEmergency}
           onClose={() => setShowEmergency(false)}

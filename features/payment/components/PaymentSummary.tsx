@@ -8,41 +8,35 @@ export default function PaymentSummary({ total }: Props) {
   return (
     <div
       className="
-      rounded-3xl
-    bg-white/20
-      backdrop-blur-md
-      border border-white/20
-      p-6
-    text-white
-      shadow-lg
+        rounded-3xl
+        bg-white
+        p-6
+        shadow-sm
       "
     >
-      {/* Label */}
-      <p className="text-sm text-green-100">Total Tagihan</p>
+      <p className="text-sm font-medium text-green-700">Total Tagihan</p>
 
-      {/* Nominal */}
-      <h2 className="mt-2 text-4xl font-bold">
+      <h2 className="mt-2 text-4xl font-bold text-gray-900">
         Rp {total.toLocaleString("id-ID")}
       </h2>
 
-      {/* Due Date */}
-      <div className="mt-6 flex items-center justify-between">
+      <div className="mt-6 flex items-end justify-between">
         <div>
-          <p className="text-sm text-green-100">Jatuh Tempo</p>
+          <p className="text-sm text-gray-500">Jatuh Tempo</p>
 
-          <p className="mt-1 text-lg font-semibold">31 Agustus 2026</p>
+          <p className="mt-1 font-semibold text-gray-800">31 Agustus 2026</p>
         </div>
 
         <button
           className="
             rounded-2xl
-            bg-white
+            bg-green-700
             px-6
             py-3
             font-semibold
-            text-green-700
+            text-white
             transition
-            hover:bg-green-50
+            hover:bg-green-800
           "
         >
           Bayar

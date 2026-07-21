@@ -1,6 +1,6 @@
 import AppLayout from "@/components/layout/AppLayout";
-import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
+import PageContent from "@/components/ui/PageContent";
 
 import { paymentData } from "@/features/payment/paymentData";
 
@@ -20,22 +20,30 @@ export default async function PaymentDetailPage({ params }: Props) {
   }
 
   return (
-    <AppLayout activeMenu="beranda">
-      <HeaderBackground variant="default">
-        <div className="px-6 pt-8 pb-8 text-white">
-          <BackButton />
+    <AppLayout
+      activeMenu="beranda"
+      header={
+        <HeaderBackground
+          variant="page"
+          title="Detail Tagihan"
+          showBackButton
+        />
+      }
+    >
+      <PageContent className="px-4 pt-4 pb-28">
+        {/* Hero Card */}
+        <div className="-mt-2 mb-6 rounded-3xl bg-white px-6 py-5 shadow-sm">
+          <span className="text-sm font-medium text-green-700">Tagihan</span>
 
-          <h1 className="mt-4 text-3xl font-bold">{payment.title}</h1>
+          <h1 className="mt-2 text-2xl font-bold text-gray-900">
+            {payment.title}
+          </h1>
 
-          <p className="mt-2 text-white/90">Detail Tagihan</p>
+          <p className="mt-2 text-gray-500">{payment.description}</p>
         </div>
-      </HeaderBackground>
 
-      <div className="px-6 py-6">
         <div className="rounded-3xl bg-white p-6 shadow-sm">
-          <h2 className="text-lg font-semibold">{payment.description}</h2>
-
-          <p className="mt-6 text-4xl font-bold text-green-700">
+          <p className="text-4xl font-bold text-green-700">
             Rp {payment.amount.toLocaleString("id-ID")}
           </p>
 
@@ -67,7 +75,7 @@ export default async function PaymentDetailPage({ params }: Props) {
             Bayar Sekarang
           </button>
         </div>
-      </div>
+      </PageContent>
     </AppLayout>
   );
 }

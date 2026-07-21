@@ -1,8 +1,8 @@
 "use client";
 
 import AppLayout from "@/components/layout/AppLayout";
-import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
+import PageContent from "@/components/ui/PageContent";
 
 import InvitationContent from "@/features/invitation/InvitationContent";
 import { invitationData } from "@/features/invitation/invitationData";
@@ -19,38 +19,40 @@ export default function InvitationPage() {
   ).length;
 
   return (
-    <AppLayout activeMenu="beranda">
-      <div className="flex h-screen flex-col bg-white">
-        <HeaderBackground variant="default">
-          <BackButton />
+    <AppLayout
+      activeMenu="beranda"
+      header={
+        <HeaderBackground
+          variant="page"
+          title="Invitation"
+          subtitle="Undangan Aktivasi Warga"
+          showBackButton
+        />
+      }
+    >
+      <PageContent className="px-4 pt-4 pb-28">
+        {/* Hero Card */}
+        <div className="-mt-2 mb-6 rounded-3xl bg-white px-6 py-5 shadow-sm">
+          <div className="flex items-start justify-between">
+            <div>
+              <p className="text-sm font-medium text-green-700">
+                Belum Diundang
+              </p>
 
-          <div className="px-6 pt-6 pb-8 text-white">
-            <h1 className="text-3xl font-bold">Invitation</h1>
+              <h2 className="mt-2 text-3xl font-bold text-gray-900">
+                {pending}
+              </h2>
+            </div>
 
-            <p className="mt-1 text-white/90">Undangan Aktivasi Warga</p>
-
-            <div className="mt-6 rounded-3xl bg-white/20 p-5 backdrop-blur">
-              <div className="flex justify-between">
-                <div>
-                  <p className="text-sm text-white/80">Belum Diundang</p>
-
-                  <h2 className="text-3xl font-bold">{pending}</h2>
-                </div>
-
-                <div className="text-right text-sm">
-                  <p>Terkirim : {sent}</p>
-
-                  <p>Aktif : {activated}</p>
-                </div>
-              </div>
+            <div className="text-right text-sm text-gray-600">
+              <p>Terkirim : {sent}</p>
+              <p>Aktif : {activated}</p>
             </div>
           </div>
-        </HeaderBackground>
-
-        <div className="flex-1 overflow-y-auto px-4 py-6 pb-28">
-          <InvitationContent />
         </div>
-      </div>
+
+        <InvitationContent />
+      </PageContent>
     </AppLayout>
   );
 }

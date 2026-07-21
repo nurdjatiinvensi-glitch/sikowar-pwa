@@ -1,13 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
-import MiniCalendar from "@/components/event/MiniCalendar";
 import AppLayout from "@/components/layout/AppLayout";
-import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
+import PageContent from "@/components/ui/PageContent";
+
 import { eventData } from "@/data/eventData";
-import Link from "next/link";
+import MiniCalendar from "@/features/event/components/MiniCalendar";
 
 export default function EventPage() {
   const [selectedDate, setSelectedDate] = useState("17");
@@ -17,16 +18,18 @@ export default function EventPage() {
   );
 
   return (
-    <AppLayout activeMenu="beranda">
-      <HeaderBackground variant="default">
-        <BackButton />
-        <div className="px-6 pt-8 pb-8 text-white">
-          <h1 className="text-3xl font-bold">Event</h1>
-
-          <p className="mt-2 text-white/90">Agenda kegiatan warga</p>
-        </div>
-      </HeaderBackground>
-      <div className="px-4 py-6">
+    <AppLayout
+      activeMenu="beranda"
+      header={
+        <HeaderBackground
+          variant="page"
+          title="Event"
+          showBackButton
+          subtitle="Agenda Kegiatan Warga"
+        />
+      }
+    >
+      <PageContent className=" px-4 pt-4 pb-28">
         <MiniCalendar
           selectedDate={selectedDate}
           onDateSelect={setSelectedDate}
@@ -42,7 +45,7 @@ export default function EventPage() {
               <Link
                 key={event.id}
                 href={`/event/${event.id}`}
-                className="block w-full rounded-3xl bg-white p-4 text-left shadow-smbuka"
+                className="block w-full rounded-3xl bg-white p-4 text-left shadow-sm"
               >
                 <div className="flex items-start justify-between">
                   <div>
@@ -57,14 +60,14 @@ export default function EventPage() {
 
                   <span
                     className="
-              rounded-full
-              bg-amber-100
-              px-3
-              py-1
-              text-xs
-              font-medium
-              text-amber-700
-            "
+                      rounded-full
+                      bg-amber-100
+                      px-3
+                      py-1
+                      text-xs
+                      font-medium
+                      text-amber-700
+                    "
                   >
                     RSVP
                   </span>
@@ -79,12 +82,12 @@ export default function EventPage() {
         ) : (
           <div
             className="
-      rounded-3xl
-      bg-white
-      p-8
-      text-center
-      shadow-sm
-    "
+              rounded-3xl
+              bg-white
+              p-8
+              text-center
+              shadow-sm
+            "
           >
             <div className="text-4xl">📅</div>
 
@@ -97,7 +100,7 @@ export default function EventPage() {
             </p>
           </div>
         )}
-      </div>
+      </PageContent>
     </AppLayout>
   );
 }

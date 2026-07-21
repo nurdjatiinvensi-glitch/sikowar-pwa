@@ -1,58 +1,54 @@
 "use client";
 
+import { Theme } from "@/lib/theme";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 type HeaderBackgroundProps = {
-  variant?: "home" | "default";
-
+  variant?: "home" | "page";
   children?: React.ReactNode;
-
   title?: string;
-
+  subtitle?: string;
   showBackButton?: boolean;
 };
 
 export default function HeaderBackground({
-  variant = "default",
+  variant = "page",
   children,
   title,
+  subtitle,
   showBackButton = false,
 }: HeaderBackgroundProps) {
   const router = useRouter();
 
-  const bgImage =
-    variant === "home"
-      ? "/images/header-beranda.png"
-      : "/images/header-default.png";
+  const config = Theme.header[variant];
 
   return (
     <div
-      className="
+      className={`
         relative
         z-20
-        h-28
+        ${config.height}
+        ${Theme.header.radius}
         overflow-hidden
-        rounded-b-2xl
         bg-cover
         bg-center
         bg-no-repeat
-      "
+      `}
       style={{
-        backgroundImage: `url(${bgImage})`,
+        backgroundImage: `url(${config.background})`,
       }}
     >
       <div className="h-full bg-linear-to-b from-black/10 to-black/5">
         {(showBackButton || title) && (
           <div
-            className="
+            className={`
               flex
               h-full
               items-start
               gap-3
-              px-5
-              pt-5
-            "
+              ${Theme.header.padding}
+            `}
           >
             {showBackButton && (
               <button
@@ -68,18 +64,13 @@ export default function HeaderBackground({
               </button>
             )}
 
-            {title && (
-              <h1
-                className="
-                  pt-1
-                  text-2xl
-                  font-bold
-                  text-white
-                "
-              >
-                {title}
-              </h1>
-            )}
+            <div className="flex flex-col">
+              {title && <h1 className={Theme.header.title}>{title}</h1>}
+
+              {subtitle && (
+                <p className="mt-1 text-sm text-white/90">{subtitle}</p>
+              )}
+            </div>
           </div>
         )}
 

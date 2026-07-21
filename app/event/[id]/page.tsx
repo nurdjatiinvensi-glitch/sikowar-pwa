@@ -1,8 +1,9 @@
-import EventRSVP from "@/components/event/EventRSVP";
 import AppLayout from "@/components/layout/AppLayout";
-import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
+import PageContent from "@/components/ui/PageContent";
+
 import { eventData } from "@/data/eventData";
+import EventRSVP from "@/features/event/components/EventRSVP";
 import { formatDate, formatTimeRange } from "@/lib/date";
 
 import { Calendar, Clock, MapPin, Phone, User } from "lucide-react";
@@ -27,18 +28,26 @@ export default async function EventDetailPage({ params }: Props) {
   }
 
   return (
-    <AppLayout activeMenu="beranda">
-      <HeaderBackground variant="default">
-        <BackButton fallbackHref="/event" />
+    <AppLayout
+      activeMenu="beranda"
+      header={
+        <HeaderBackground variant="page" title="Detail Event" showBackButton />
+      }
+    >
+      <PageContent className="px-4 pt-4 pb-28">
+        {/* Header Card */}
+        <div className="-mt-2 mb-6 rounded-3xl bg-white px-6 py-5 shadow-sm">
+          <span className="text-sm font-medium text-green-700">
+            Agenda Warga
+          </span>
 
-        <div className="px-6 pt-8 pb-8 text-white">
-          <h1 className="text-3xl font-bold">{event.title}</h1>
+          <h1 className="mt-2 text-2xl font-bold text-gray-900">
+            {event.title}
+          </h1>
 
-          <p className="mt-2 text-white/90">{formatDate(event.date)}</p>
+          <p className="mt-2 text-gray-500">{formatDate(event.date)}</p>
         </div>
-      </HeaderBackground>
 
-      <div className="px-6 py-6">
         {/* Informasi Event */}
         <div className="space-y-4">
           <div className="flex items-center gap-3">
@@ -75,11 +84,13 @@ export default async function EventDetailPage({ params }: Props) {
         </div>
 
         {/* RSVP */}
-        <EventRSVP
-          defaultStatus={event.myStatus}
-          totalAttendees={event.attendeeCount}
-        />
-      </div>
+        <div className="mt-8">
+          <EventRSVP
+            defaultStatus={event.myStatus}
+            totalAttendees={event.attendeeCount}
+          />
+        </div>
+      </PageContent>
     </AppLayout>
   );
 }

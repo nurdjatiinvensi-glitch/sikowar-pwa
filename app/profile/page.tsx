@@ -1,11 +1,11 @@
 "use client";
 
 import SettingCard from "@/components/cards/SettingCard";
-import NotificationButton from "@/components/common/NotificationButton";
 import AppLayout from "@/components/layout/AppLayout";
 import BackButton from "@/components/layout/BackButton";
 import HeaderBackground from "@/components/layout/HeaderBackground";
 import { profileData } from "@/data/profileData";
+import NotificationButton from "@/features/notification/components/NotificationButton";
 
 import { House, Info, Lock, LogOut, Shield, User, Users } from "lucide-react";
 import { useState } from "react";
@@ -17,7 +17,7 @@ export default function ProfilePage() {
     <AppLayout activeMenu="profile">
       <div className="flex h-screen flex-col bg-white">
         {/* HEADER */}
-        <HeaderBackground variant="default">
+        <HeaderBackground variant="page">
           <BackButton />
 
           <div
